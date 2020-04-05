@@ -28,7 +28,7 @@ Va calcula investitia lunara a masinii, tinand cont de functionalitati.
 Nefamiliarizarea cu tehnologii de MDS.
 
 ## Diagrame de cazuri de utilizare:
-![USECASE](https://i.ibb.co/1J9n9C9/captura.png)
+![USECASE](https://i.ibb.co/QfLrBmV/captura.png)
 
 
 ## PR cu descriere:
