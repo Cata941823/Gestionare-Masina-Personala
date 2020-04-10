@@ -1,16 +1,9 @@
 package com.proiectmds.demo;
 
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-
 import javax.persistence.*;
-import java.util.List;
-import java.util.Optional;
 
-@Entity
-public class Utilizatori{
+@Entity(name = "utilizatori")
+public class Utilizator {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,12 +14,11 @@ public class Utilizatori{
     private String nume;
     private String prenume;
     private String varsta;
-
     private String email;
 
-    public Utilizatori(){ };
+    public Utilizator(){ };
 
-    public Utilizatori(String username, String parola, String nume, String prenume, String varsta, String email) {
+    public Utilizator(String username, String parola, String nume, String prenume, String varsta, String email) {
         this.username = username;
         this.parola = parola;
         this.nume = nume;
@@ -85,7 +77,7 @@ public class Utilizatori{
 
     @Override
     public String toString() {
-        return "Utilizatori{" +
+        return "Utilizator{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", parola='" + parola + '\'' +
@@ -95,6 +87,4 @@ public class Utilizatori{
                 ", email='" + email + '\'' +
                 '}';
     }
-
-
 }
