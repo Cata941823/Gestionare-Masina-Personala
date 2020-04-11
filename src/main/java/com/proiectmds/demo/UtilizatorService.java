@@ -19,12 +19,13 @@ public class UtilizatorService {
     }
 
     public void insertUtilizator(Utilizator utilizator){
+        System.out.println("-------------\n");
+        System.out.println(utilizator);
         utilizatorReposistory.save(utilizator);
     }
 
-    public int logging(String user, String parola){
-        if(utilizatorReposistory.findByUsernameAndParola(user, parola).size()!=0) return 1;
-        else return 0;
+    public List<Utilizator> logging(String user, String parola){
+        return utilizatorReposistory.findByUsernameAndParola(user, parola);
     }
 
     public void deleteUtilizator(int id){

@@ -31,8 +31,9 @@ public class UtilizatorController extends SpringBootServletInitializer {
 */
 
     // GET METHODS
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public int login(@RequestBody Map<String, String> payload){
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public List<Utilizator> login(@RequestBody Map<String, String> payload){
         return utilizatorService.logging(payload.get("username"), payload.get("parola"));
     }
 
@@ -43,12 +44,14 @@ public class UtilizatorController extends SpringBootServletInitializer {
     }
 
     // POST METHODS
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/utilizatori", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
     public void insert(@RequestBody Utilizator utilizator){
         utilizatorService.insertUtilizator(utilizator);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public void delete(@RequestBody Map<String, Integer> payload){
         utilizatorService.deleteUtilizator(payload.get("id"));

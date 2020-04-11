@@ -1,4 +1,53 @@
-<p>signup works!</p>
+<!--<p>signup works!</p>
 
 <button (click)="getUsers()">Show users</button>
 <div>{{users}}</div>
+-->
+
+<video autoplay muted loop id="myVideo">
+  <source
+    src="https://freefrontend.com/assets/img/css-animated-backgrounds/Sliding-Diagonals-Background-Effect-HTML-CSS.mp4"
+    type="video/mp4">
+</video>
+
+<div class="signup-container">
+
+  <div class="picture1">&nbsp;</div>
+  <form class="signup-form">
+
+    <mat-form-field class="signup-full-width">
+      <mat-label>Username</mat-label>
+      <input matInput [(ngModel)]="username" type="text" name="username">
+    </mat-form-field>
+
+    <mat-form-field class="signup-full-width">
+      <mat-label>Password</mat-label>
+      <input matInput [(ngModel)]="parola" type="password" name="parola">
+    </mat-form-field>
+
+    <mat-form-field class="signup-full-width">
+      <mat-label>Nume</mat-label>
+      <input matInput [(ngModel)]="nume" type="text" name="nume">
+    </mat-form-field>
+
+    <mat-form-field class="signup-full-width">
+      <mat-label>Prenume</mat-label>
+      <input matInput [(ngModel)]="prenume" type="text" name="prenume">
+    </mat-form-field>
+
+    <mat-form-field class="signup-full-width">
+      <mat-label>Varsta</mat-label>
+      <input matInput [(ngModel)]="varsta" type="text" name="varsta">
+    </mat-form-field>
+
+    <mat-form-field class="signup-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="email" type="text" name="email">
+    </mat-form-field>
+    <button routerLink={{catreLogin}} (click)="insertUser()" class="signup-button" mat-raised-button color="primary">SIGN UP</button>
+  </form>
+  <div class="goto-login">
+    Ai deja un cont? <a routerLink="/login" routerLinkActive="active" style="text-decoration: none;">Click aici</a>
+  </div>
+</div>
+
