@@ -40,13 +40,12 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  modifiyRoute(data){
-    if (data.length>0) {
+  modifiyRoute(data) {
+    if (data.length > 0) {
       console.log("A INTRAT");
       this.router.navigateByUrl("/platforma", {skipLocationChange: true});
       this.location.replaceState('/platforma');
-    }
-    else{
+    } else {
       console.log("NOP");
     }
   }

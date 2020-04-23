@@ -17,18 +17,11 @@ public class UtilizatorController extends SpringBootServletInitializer {
     @Autowired
     UtilizatorService utilizatorService;
 
-    /*
-    @PostMapping("/blog/search")
-    public List<Utilizator> search(@RequestBody Map<String, String> payload){
-        String searchTerm = payload.get("parola");
-        List<Utilizator> listaUseri = utilizator.findByParola(searchTerm);
-        if(listaUseri.size() != 0){
-            int x = listaUseri.size();
-            for(int i = 0; i<listaUseri.size();i++) System.out.println("YUHUHUUUUI\n");
-        }
-        return listaUseri;
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/toate-mail-urile", method = RequestMethod.POST)
+    public List<Utilizator> gettooooooootiutilizatoriidupaemail(@RequestBody Map<String, String> payload){
+        return utilizatorService.gasesteDupaEmail(payload.get("adresa-postala"));
     }
-*/
 
     // GET METHODS
     @CrossOrigin(origins = "http://localhost:4200")
@@ -65,3 +58,18 @@ public class UtilizatorController extends SpringBootServletInitializer {
     }
 
 }
+
+
+
+    /*
+    @PostMapping("/blog/search")
+    public List<Utilizator> search(@RequestBody Map<String, String> payload){
+        String searchTerm = payload.get("parola");
+        List<Utilizator> listaUseri = utilizator.findByParola(searchTerm);
+        if(listaUseri.size() != 0){
+            int x = listaUseri.size();
+            for(int i = 0; i<listaUseri.size();i++) System.out.println("YUHUHUUUUI\n");
+        }
+        return listaUseri;
+    }
+*/

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {Location} from "@angular/common";
+import {DataService} from "../services/data.service";
 
 @Component({
   selector: 'app-platforma',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlatformaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private location: Location, private dataService: DataService) { }
 
   ngOnInit(): void {
   }

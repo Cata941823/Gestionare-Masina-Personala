@@ -18,6 +18,11 @@ public class UtilizatorService {
         return utilizatori;
     }
 
+    public List<Utilizator> gasesteDupaEmail(String email){
+        return utilizatorReposistory.findByEmail(email);
+    }
+
+
     public void insertUtilizator(Utilizator utilizator){
         System.out.println("-------------\n");
         System.out.println(utilizator);

@@ -14,6 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from "@angular/forms";
 import {LoginComponent} from './login/login.component';
 import { PlatformaComponent } from './platforma/platforma.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 const appRoutes: Routes = [
   {path: 'signup', component: SignupComponent},
@@ -29,20 +30,21 @@ const appRoutes: Routes = [
     LoginComponent,
     PlatformaComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatSliderModule,
-    MatButtonModule,
-    FormsModule,
-    RouterModule.forRoot(
-      appRoutes,
-      {enableTracing: true}
-    )
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatSliderModule,
+        MatButtonModule,
+        FormsModule,
+        RouterModule.forRoot(
+            appRoutes,
+            {enableTracing: true}
+        ),
+        MatMenuModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
