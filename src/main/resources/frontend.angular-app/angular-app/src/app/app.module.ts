@@ -15,6 +15,7 @@ import {FormsModule} from "@angular/forms";
 import {LoginComponent} from './login/login.component';
 import { PlatformaComponent } from './platforma/platforma.component';
 import {MatMenuModule} from "@angular/material/menu";
+import { ListaMasiniComponent } from './lista-masini/lista-masini.component';
 
 const appRoutes: Routes = [
   {path: 'signup', component: SignupComponent},
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     AppComponent,
     SignupComponent,
     LoginComponent,
-    PlatformaComponent
+    PlatformaComponent,
+    ListaMasiniComponent
   ],
     imports: [
         BrowserModule,
