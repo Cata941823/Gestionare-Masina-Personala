@@ -18,7 +18,7 @@ public class UtilizatorController extends SpringBootServletInitializer {
     UtilizatorService utilizatorService;
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @RequestMapping(value = "/toate-mail-urile", method = RequestMethod.POST)
+    @RequestMapping(value = "/toate-mail-urile", method = RequestMethod.GET)
     public List<Utilizator> gettooooooootiutilizatoriidupaemail(@RequestBody Map<String, String> payload){
         return utilizatorService.gasesteDupaEmail(payload.get("adresa-postala"));
     }
