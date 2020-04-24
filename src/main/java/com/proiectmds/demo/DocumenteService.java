@@ -27,7 +27,7 @@ public class DocumenteService {
         System.out.println(documente);
         documenteReposistory.save(documente);
     }
-
+    ///testare functie
 
 
 }
