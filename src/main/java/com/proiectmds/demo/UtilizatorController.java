@@ -53,7 +53,7 @@ public class UtilizatorController extends SpringBootServletInitializer {
 
     // TEST
     @GetMapping("/signup")
-    public String hello(@RequestParam(value = "name", defaultValue = "Catalin") String name) {
+    public String hello(@RequestParam(value = "name", defaultValue = "Alex") String name) {
         return String.format("Hello %s!", name);
     }
 
