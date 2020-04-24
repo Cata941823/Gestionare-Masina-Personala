@@ -22,7 +22,11 @@ public class DocumenteService {
         return documente;
     }
 
-
+    public void insertDocument(Documente documente){
+        System.out.println("-------------\n");
+        System.out.println(documente);
+        documenteReposistory.save(documente);
+    }
 
 
 
