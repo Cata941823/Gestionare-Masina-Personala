@@ -9,5 +9,4 @@ import java.util.List;
 public interface UtilizatorReposistory extends JpaRepository<Utilizator, Integer> {
     List<Utilizator> findByUsernameAndParola(String user, String pass);
     List<Utilizator> findByEmail(String email);
-
 }
