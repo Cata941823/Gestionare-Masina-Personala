@@ -17,7 +17,7 @@ public class UtilizatorController extends SpringBootServletInitializer {
     UtilizatorService utilizatorService;
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @RequestMapping(value = "/toate-mail-urile", method = RequestMethod.POST)
+    @RequestMapping(value = "/toate-mail-urile", method = RequestMethod.GET)
     public List<Utilizator> gettooooooootiutilizatoriidupaemail(@RequestBody Map<String, String> payload){
         return utilizatorService.gasesteDupaEmail(payload.get("adresa-postala"));
     }
@@ -52,7 +52,7 @@ public class UtilizatorController extends SpringBootServletInitializer {
 
     // TEST
     @GetMapping("/signup")
-    public String hello(@RequestParam(value = "name", defaultValue = "Catalin") String name) {
+    public String hello(@RequestParam(value = "name", defaultValue = "Alex") String name) {
         return String.format("Hello %s!", name);
     }
 
