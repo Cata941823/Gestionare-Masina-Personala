@@ -3,7 +3,6 @@ package com.proiectmds.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +25,7 @@ public class UtilizatorController extends SpringBootServletInitializer {
     // GET METHODS
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public List<Utilizator> login(@RequestBody Map<String, String> payload){
+    public Utilizator login(@RequestBody Map<String, String> payload){
         return utilizatorService.logging(payload.get("username"), payload.get("parola"));
     }
 

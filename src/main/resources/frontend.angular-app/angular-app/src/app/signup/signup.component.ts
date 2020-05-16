@@ -1,14 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from "../services/data.service";
-
-export class Utilizator {
-  username;
-  parola;
-  nume;
-  prenume;
-  varsta;
-  email;
-}
+import {Utilizator} from "../services/car-log.service";
 
 @Component({
   selector: 'app-signup',

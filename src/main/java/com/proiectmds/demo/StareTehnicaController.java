@@ -25,9 +25,15 @@ public class StareTehnicaController extends SpringBootServletInitializer {
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @RequestMapping(value = "/toate-masinile-avariate", method = RequestMethod.GET)
+    @RequestMapping(value = "/toate-masinile-avariate-dupa-id", method = RequestMethod.GET)
     public List<StareTehnica> VeziMasinaAvariataDupaID(@RequestBody Map<String, Integer> payload){
         return stareTehnicaService.gasestedupaid(payload.get("id"));
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/masini-cu-km", method = RequestMethod.GET)
+    public List<StareTehnica> getMasinaCuKM(@RequestBody Map<String, Integer> payload){
+        return stareTehnicaService.MasiniCuKm(payload.get("km"));
     }
 
 

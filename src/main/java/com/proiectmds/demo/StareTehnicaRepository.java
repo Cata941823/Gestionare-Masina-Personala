@@ -9,5 +9,6 @@ import java.util.List;
 public interface StareTehnicaRepository extends JpaRepository<StareTehnica, Integer> {
     List<StareTehnica> findById(int Id);
     List<StareTehnica> findByAvarii(boolean avariat);
+    List<StareTehnica> findByKilometraj(int kilometraj);
 
 }
