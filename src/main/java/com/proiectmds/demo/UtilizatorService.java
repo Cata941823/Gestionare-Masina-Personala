@@ -29,7 +29,7 @@ public class UtilizatorService {
         utilizatorReposistory.save(utilizator);
     }
 
-    public List<Utilizator> logging(String user, String parola){
+    public Utilizator logging(String user, String parola){
         return utilizatorReposistory.findByUsernameAndParola(user, parola);
     }
 

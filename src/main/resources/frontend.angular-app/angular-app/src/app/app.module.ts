@@ -16,6 +16,8 @@ import {LoginComponent} from './login/login.component';
 import { PlatformaComponent } from './platforma/platforma.component';
 import {MatMenuModule} from "@angular/material/menu";
 import { ListaMasiniComponent } from './lista-masini/lista-masini.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { ContulMeuComponent } from './contul-meu/contul-meu.component';
 
 const appRoutes: Routes = [
   {path: 'signup', component: SignupComponent},
@@ -30,7 +32,9 @@ const appRoutes: Routes = [
     SignupComponent,
     LoginComponent,
     PlatformaComponent,
-    ListaMasiniComponent
+    ListaMasiniComponent,
+    AdminPanelComponent,
+    ContulMeuComponent
   ],
     imports: [
         BrowserModule,

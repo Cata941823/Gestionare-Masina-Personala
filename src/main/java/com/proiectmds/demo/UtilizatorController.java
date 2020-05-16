@@ -25,7 +25,7 @@ public class UtilizatorController extends SpringBootServletInitializer {
     // GET METHODS
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public List<Utilizator> login(@RequestBody Map<String, String> payload){
+    public Utilizator login(@RequestBody Map<String, String> payload){
         return utilizatorService.logging(payload.get("username"), payload.get("parola"));
     }
 
