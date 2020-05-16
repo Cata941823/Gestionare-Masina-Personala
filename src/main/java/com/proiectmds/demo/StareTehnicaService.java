@@ -26,6 +26,11 @@ public class StareTehnicaService  {
         return stareTehnica;
     }
 
+    ///MasinicuKm nu este este tastat
+    public List<StareTehnica>MasiniCuKm(int kilometraj){
+           return stareTehnicaReposistory.findByKilometraj(kilometraj); }
+
+
     public void insertStareTehnica(StareTehnica stareTehnica){
         System.out.println("-------------\n");
         System.out.println(stareTehnica);
