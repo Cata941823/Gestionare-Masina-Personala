@@ -1,5 +1,7 @@
-package com.proiectmds.demo;
+package com.proiectmds.demo.service;
 
+import com.proiectmds.demo.model.Documente;
+import com.proiectmds.demo.repository.DocumenteReposistory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

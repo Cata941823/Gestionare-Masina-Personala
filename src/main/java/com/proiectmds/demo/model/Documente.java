@@ -1,9 +1,9 @@
-package com.proiectmds.demo;
+package com.proiectmds.demo.model;
 
 
 import javax.persistence.*;
 
-@Entity(name = "documente")
+@Entity(name = "document")
 public class Documente {
 
     @Id
@@ -11,7 +11,7 @@ public class Documente {
     private int iddocument;
 
 
-    private String VIN;
+    private String vin;
     private String tipdocument;
     private String dataexpirare;
     private float pret;
@@ -21,7 +21,7 @@ public class Documente {
 
     public Documente(int iddocument, String VIN, String tipdocument, String dataexpirare, float pret, String poza) {
         this.iddocument = iddocument;
-        this.VIN = VIN;
+        this.vin = VIN;
         this.tipdocument = tipdocument;
         this.dataexpirare = dataexpirare;
         this.pret = pret;
@@ -37,12 +37,12 @@ public class Documente {
         this.iddocument = iddocument;
     }
 
-    public String getVIN() {
-        return VIN;
+    public String getVin() {
+        return vin;
     }
 
-    public void setVIN(String VIN) {
-        this.VIN = VIN;
+    public void setVin(String VIN) {
+        this.vin = VIN;
     }
 
     public String getTipdocument() {
@@ -81,7 +81,7 @@ public class Documente {
     public String toString() {
         return "Documente{" +
                 "iddocument=" + iddocument +
-                ", VIN='" + VIN + '\'' +
+                ", VIN='" + vin + '\'' +
                 ", tipdocument='" + tipdocument + '\'' +
                 ", dataexpirare='" + dataexpirare + '\'' +
                 ", pret='" + pret + '\'' +

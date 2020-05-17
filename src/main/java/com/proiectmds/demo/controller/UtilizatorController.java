@@ -1,5 +1,7 @@
-package com.proiectmds.demo;
+package com.proiectmds.demo.controller;
 
+import com.proiectmds.demo.service.UtilizatorService;
+import com.proiectmds.demo.model.Utilizator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.http.HttpStatus;
@@ -27,6 +29,39 @@ public class UtilizatorController extends SpringBootServletInitializer {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Utilizator login(@RequestBody Map<String, String> payload){
         return utilizatorService.logging(payload.get("username"), payload.get("parola"));
+    }
+
+
+    // GET METHODS
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/kilometraj", method = RequestMethod.POST)
+    public int getAllKilometraj(@RequestBody Map<String, String> payload){
+        return utilizatorService.getAllKilometraj(payload.get("username"));
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/valuemasini", method = RequestMethod.POST)
+    public int getAllPretMasini(@RequestBody Map<String, String> payload){
+        return utilizatorService.getAllPretMasina(payload.get("username"));
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/nrmasini", method = RequestMethod.POST)
+    public int getNrMasini(@RequestBody Map<String, String> payload){
+        return utilizatorService.getNrMasini(payload.get("username"));
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/nravariatii", method = RequestMethod.POST)
+    public int getNrAvariatii(@RequestBody Map<String, String> payload){
+        return utilizatorService.getNrAvariatii(payload.get("username"));
+    }
+
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/totalalimentari", method = RequestMethod.POST)
+    public int getTotalAlimentari(@RequestBody Map<String, String> payload){
+        return utilizatorService.getTotalAlimentari(payload.get("username"));
     }
 
     @CrossOrigin(origins = "http://localhost:4200")

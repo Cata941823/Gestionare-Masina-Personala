@@ -1,1 +1,54 @@
-<p>contul-meu works!</p>
+<div class="meniu">
+  <div class="logo">
+
+  </div>
+  <div class="submeniu">
+    <button mat-button>Garaj</button>
+    <button mat-button>Stare tehnica</button>
+    <button mat-button>Documente</button>
+    <button mat-button>{{username}}</button>
+
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://simpleicon.com/wp-content/uploads/account.png" alt="Avatar" style="width:100%">
+  <h1>{{nume}} {{prenume}}</h1>
+  <p class="title">{{email}}</p>
+  <p>{{varsta}} ani</p>
+  <p><button class="settings-button">Settings</button></p>
+</div>
+
+<div class="card-1">
+  <br>
+  <h1>Km. parcursi total</h1>
+  <p class="title">{{kilometraj}} km</p>
+  <br>
+  <hr>
+
+  <br>
+  <h1>Valoare totala masini</h1>
+  <p class="title">{{pret_masini}} EUR</p>
+  <br>
+  <hr>
+
+  <br>
+  <h1>Nr. masini in garaj</h1>
+  <p class="title">{{nr_masini}}</p>
+  <br>
+  <hr>
+
+  <br>
+  <h1>Avariatii</h1>
+  <p class="title">TOTAL: {{nr_avariatii}}</p>
+  <br>
+  <hr>
+
+  <br>
+  <h1>Total alimentari facute</h1>
+  <p class="title">{{total_alimentari}} RON</p>
+  <br>
+  <hr>
+
+
+</div>

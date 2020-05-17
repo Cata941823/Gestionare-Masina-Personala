@@ -1,5 +1,7 @@
-package com.proiectmds.demo;
+package com.proiectmds.demo.service;
 
+import com.proiectmds.demo.model.Utilizator;
+import com.proiectmds.demo.repository.UtilizatorReposistory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,26 @@ public class UtilizatorService {
         System.out.println("-------------\n");
         System.out.println(utilizator);
         utilizatorReposistory.save(utilizator);
+    }
+
+    public int getAllKilometraj(String username){
+        return utilizatorReposistory.findTotalKM(username);
+    }
+
+    public int getAllPretMasina(String username){
+        return utilizatorReposistory.findPretMasini(username);
+    }
+
+    public int getNrMasini(String username){
+        return utilizatorReposistory.findNrMasini(username);
+    }
+
+    public int getNrAvariatii(String username){
+        return utilizatorReposistory.findNrAvariatii(username);
+    }
+
+    public int getTotalAlimentari(String username){
+        return utilizatorReposistory.findTotalAlimentari(username);
     }
 
     public Utilizator logging(String user, String parola){

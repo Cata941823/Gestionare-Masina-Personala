@@ -26,12 +26,4 @@ export class CarLogService {
     return this.utilizator;
   }
 
-
-  setUsername(username){
-    this.username = username;
-  }
-
-  getUsername() {
-    return this.username;
-  }
 }

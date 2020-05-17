@@ -21,6 +21,7 @@ import { ContulMeuComponent } from './contul-meu/contul-meu.component';
 
 const appRoutes: Routes = [
   {path: 'signup', component: SignupComponent},
+  {path: 'myaccount', component: ContulMeuComponent},
   {path: 'login', component: LoginComponent},
   {path: 'platforma', component: PlatformaComponent},
   {path: '', redirectTo: '/signup', pathMatch: 'full'}

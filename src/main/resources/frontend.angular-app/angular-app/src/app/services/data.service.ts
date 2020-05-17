@@ -36,4 +36,37 @@ export class DataService {
     }
     return this.httpClient.post<any>(url, payload);
   }
+
+  getKilometraj(username): Observable<HttpResponse<any>> {
+    let url = this.baseUrl.concat("/search/kilometraj");
+    let payload = {username: username};
+    return this.httpClient.post<any>(url, payload);
+  }
+
+  getNrMasini(username): Observable<HttpResponse<any>> {
+    let url = this.baseUrl.concat("/search/nrmasini");
+    let payload = {username: username};
+    return this.httpClient.post<any>(url, payload);
+  }
+
+  getPretMasini(username): Observable<HttpResponse<any>> {
+    let url = this.baseUrl.concat("/search/valuemasini");
+    let payload = {username: username};
+    return this.httpClient.post<any>(url, payload);
+  }
+
+  getNrAvariatii(username): Observable<HttpResponse<any>> {
+    let url = this.baseUrl.concat("/search/nravariatii");
+    let payload = {username: username};
+    return this.httpClient.post<any>(url, payload);
+  }
+
+  getTotalAlimentari(username): Observable<HttpResponse<any>> {
+    let url = this.baseUrl.concat("/search/totalalimentari");
+    let payload = {username: username};
+    return this.httpClient.post<any>(url, payload);
+  }
+
+
+
 }

@@ -1,4 +1,4 @@
-package com.proiectmds.demo;
+package com.proiectmds.demo.model;
 
 import javax.persistence.*;
 
@@ -11,16 +11,16 @@ public class StareTehnica {
 
     private int idmasina;
     private int kilometraj;
-    private boolean avarii;
+    private short avariatii;
     private String mentiuniavarii;
 
     public StareTehnica() {
     }
 
-    public StareTehnica(int id_masina,int kilometraj, boolean avarii, String MentiuniAvarii) {
+    public StareTehnica(int id_masina,int kilometraj, short avariatii, String MentiuniAvarii) {
         this.idmasina = id_masina;
         this.kilometraj = kilometraj;
-        this.avarii = avarii;
+        this.avariatii = avariatii;
         this.mentiuniavarii = MentiuniAvarii;
     }
 
@@ -48,12 +48,12 @@ public class StareTehnica {
         this.kilometraj = kilometraj;
     }
 
-    public boolean isAvarii() {
-        return avarii;
+    public short getAvariatii() {
+        return avariatii;
     }
 
-    public void setAvarii(boolean avarii) {
-        this.avarii = avarii;
+    public void setAvariatii(short avariatii) {
+        this.avariatii = avariatii;
     }
 
     public String getMentiuniAvarii() {
@@ -70,7 +70,7 @@ public class StareTehnica {
                 "id=" + id +
                 ", id_masina=" + idmasina +
                 ", kilometraj=" + kilometraj +
-                ", avarii=" + avarii +
+                ", avarii=" + avariatii +
                 ", MentiuniAvarii='" + mentiuniavarii + '\'' +
                 '}';
     }

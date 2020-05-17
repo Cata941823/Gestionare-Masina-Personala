@@ -1,4 +1,4 @@
-package com.proiectmds.demo;
+package com.proiectmds.demo.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
-@Entity(name="masini")
+@Entity(name="masina")
 public class Masina {
 
     @Id
@@ -20,10 +20,11 @@ public class Masina {
     private String nrinmatriculare;
     private Date dataachizitie;
     private String tipcombustibil;
+    private int pret;
 
     public Masina(){};
 
-    public Masina(int idmasina, String VIN, int iduser, String marca, String model, String nrinmatriculare, Date dataachizitie, String tipcombustibil) {
+    public Masina(int idmasina, String VIN, int iduser, String marca, String model, String nrinmatriculare, Date dataachizitie, String tipcombustibil, int pret) {
         this.id = idmasina;
         this.vin = VIN;
         this.iduser = iduser;
@@ -32,6 +33,7 @@ public class Masina {
         this.nrinmatriculare = nrinmatriculare;
         this.dataachizitie = dataachizitie;
         this.tipcombustibil = tipcombustibil;
+        this.pret = pret;
     }
 
     public int getId() {
