@@ -1,8 +1,8 @@
-package com.proiectmds.demo;
+package com.proiectmds.model;
 
 import javax.persistence.*;
 
-@Entity(name = "utilizatori")
+@Entity(name = "utilizator")
 public class Utilizator {
 
     @Id
