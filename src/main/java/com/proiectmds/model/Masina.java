@@ -1,4 +1,4 @@
-package com.proiectmds.demo.model;
+package com.proiectmds.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

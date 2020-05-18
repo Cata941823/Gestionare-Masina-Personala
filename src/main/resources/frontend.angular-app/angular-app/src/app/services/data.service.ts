@@ -68,5 +68,9 @@ export class DataService {
   }
 
 
-
+  getToateDocumentele(username): Observable<HttpResponse<any>> {
+    let url = this.baseUrl.concat("/search/toatedocumentele");
+    let payload = {username: username};
+    return this.httpClient.post<any>(url, payload);
+  }
 }

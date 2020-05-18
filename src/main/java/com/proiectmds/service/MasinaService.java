@@ -1,7 +1,7 @@
-package com.proiectmds.demo.service;
+package com.proiectmds.service;
 
-import com.proiectmds.demo.model.Masina;
-import com.proiectmds.demo.repository.MasinaRepository;
+import com.proiectmds.model.Masina;
+import com.proiectmds.repository.MasinaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
-package com.proiectmds.demo.controller;
+package com.proiectmds.controller;
 
-import com.proiectmds.demo.service.StareTehnicaService;
-import com.proiectmds.demo.model.StareTehnica;
+import com.proiectmds.service.StareTehnicaService;
+import com.proiectmds.model.StareTehnica;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.http.HttpStatus;

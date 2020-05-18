@@ -1,11 +1,11 @@
 <div class="meniu">
-  <div class="logo">
+  <div (click)="redirectToPlatform();" style="cursor: pointer;" class="logo">
 
   </div>
   <div class="submeniu">
     <button mat-button>Garaj</button>
     <button mat-button>Stare tehnica</button>
-    <button mat-button>Documente</button>
+    <button mat-button (click)="redirectToDocumente();">Documente</button>
     <button mat-button>{{username}}</button>
 
   </div>
@@ -16,7 +16,7 @@
   <h1>{{nume}} {{prenume}}</h1>
   <p class="title">{{email}}</p>
   <p>{{varsta}} ani</p>
-  <p><button class="settings-button">Settings</button></p>
+  <p><button class="settings-button" (click)="redirectToLogin();">Sign out</button></p>
 </div>
 
 <div class="card-1">

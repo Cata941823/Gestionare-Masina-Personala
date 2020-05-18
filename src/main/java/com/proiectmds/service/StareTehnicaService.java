@@ -1,7 +1,7 @@
-package com.proiectmds.demo.service;
+package com.proiectmds.service;
 
-import com.proiectmds.demo.model.StareTehnica;
-import com.proiectmds.demo.repository.StareTehnicaRepository;
+import com.proiectmds.model.StareTehnica;
+import com.proiectmds.repository.StareTehnicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,9 @@
-package com.proiectmds.demo.model;
+package com.proiectmds.model;
 
 
 import javax.persistence.*;
+import java.sql.Blob;
+import java.util.Date;
 
 @Entity(name = "document")
 public class Documente {
@@ -13,19 +15,18 @@ public class Documente {
 
     private String vin;
     private String tipdocument;
-    private String dataexpirare;
-    private float pret;
-    private String poza;
+    private Date dataexpirare;
+    private int pret;
 
-    public Documente() { }
+    public Documente() {
+    }
 
-    public Documente(int iddocument, String VIN, String tipdocument, String dataexpirare, float pret, String poza) {
+    public Documente(int iddocument, String VIN, String tipdocument, Date dataexpirare, int pret) {
         this.iddocument = iddocument;
         this.vin = VIN;
         this.tipdocument = tipdocument;
         this.dataexpirare = dataexpirare;
         this.pret = pret;
-        this.poza = poza;
     }
 
 
@@ -53,11 +54,11 @@ public class Documente {
         this.tipdocument = tipdocument;
     }
 
-    public String getDataexpirare() {
+    public Date getDataexpirare() {
         return dataexpirare;
     }
 
-    public void setDataexpirare(String dataexpirare) {
+    public void setDataexpirare(Date dataexpirare) {
         this.dataexpirare = dataexpirare;
     }
 
@@ -65,17 +66,10 @@ public class Documente {
         return pret;
     }
 
-    public void setPret(float pret) {
+    public void setPret(int pret) {
         this.pret = pret;
     }
 
-    public String getPoza() {
-        return poza;
-    }
-
-    public void setPoza(String poza) {
-        this.poza = poza;
-    }
 
     @Override
     public String toString() {
@@ -85,7 +79,6 @@ public class Documente {
                 ", tipdocument='" + tipdocument + '\'' +
                 ", dataexpirare='" + dataexpirare + '\'' +
                 ", pret='" + pret + '\'' +
-                ", poza='" + poza + '\'' +
                 '}';
     }
 }

@@ -1,7 +1,8 @@
-package com.proiectmds.demo.controller;
+package com.proiectmds.controller;
 
-import com.proiectmds.demo.service.UtilizatorService;
-import com.proiectmds.demo.model.Utilizator;
+import com.proiectmds.model.Documente;
+import com.proiectmds.service.UtilizatorService;
+import com.proiectmds.model.Utilizator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.http.HttpStatus;
@@ -68,6 +69,12 @@ public class UtilizatorController extends SpringBootServletInitializer {
     @RequestMapping("/utilizatori")
     public List<Utilizator> getAllUtilizatori(){
         return utilizatorService.getAllUtilizator();
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/toatedocumentele", method = RequestMethod.POST)
+    public List<Object> getToateDocumentele(@RequestBody Map<String, String> payload){
+        return utilizatorService.findToateDocumentele(payload.get("username"));
     }
 
     // POST METHODS

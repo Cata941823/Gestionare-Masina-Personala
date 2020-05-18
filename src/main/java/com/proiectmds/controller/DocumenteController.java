@@ -1,7 +1,7 @@
-package com.proiectmds.demo.controller;
+package com.proiectmds.controller;
 
-import com.proiectmds.demo.service.DocumenteService;
-import com.proiectmds.demo.model.Documente;
+import com.proiectmds.service.DocumenteService;
+import com.proiectmds.model.Documente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.web.bind.annotation.*;

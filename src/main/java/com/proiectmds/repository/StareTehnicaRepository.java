@@ -1,6 +1,6 @@
-package com.proiectmds.demo.repository;
+package com.proiectmds.repository;
 
-import com.proiectmds.demo.model.StareTehnica;
+import com.proiectmds.model.StareTehnica;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

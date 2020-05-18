@@ -1,7 +1,8 @@
-package com.proiectmds.demo.service;
+package com.proiectmds.service;
 
-import com.proiectmds.demo.model.Utilizator;
-import com.proiectmds.demo.repository.UtilizatorReposistory;
+import com.proiectmds.model.Documente;
+import com.proiectmds.model.Utilizator;
+import com.proiectmds.repository.UtilizatorReposistory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +51,8 @@ public class UtilizatorService {
     public int getTotalAlimentari(String username){
         return utilizatorReposistory.findTotalAlimentari(username);
     }
+
+    public List<Object> findToateDocumentele(String username){ return utilizatorReposistory.findToateDocumentele(username); }
 
     public Utilizator logging(String user, String parola){
         return utilizatorReposistory.findByUsernameAndParola(user, parola);

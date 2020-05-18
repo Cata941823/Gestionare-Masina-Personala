@@ -1,4 +1,4 @@
-package com.proiectmds.demo;
+package com.proiectmds;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

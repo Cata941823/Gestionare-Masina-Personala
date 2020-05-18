@@ -1,11 +1,13 @@
-package com.proiectmds.demo.repository;
+package com.proiectmds.repository;
 
-import com.proiectmds.demo.model.Utilizator;
+import com.proiectmds.model.Documente;
+import com.proiectmds.model.Utilizator;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.print.Doc;
 import java.util.List;
 
 @Repository
@@ -28,5 +30,9 @@ public interface UtilizatorReposistory extends JpaRepository<Utilizator, Integer
 
     @Query("SELECT SUM(d.pret) FROM document d INNER JOIN masina m ON d.vin = m.vin INNER JOIN utilizator u ON m.iduser = u.id WHERE lower(u.username) = lower(:username) GROUP BY u.id")
     public int findTotalAlimentari(@Param("username") String username);
+
+    @Query("SELECT d.iddocument, d.vin, d.tipdocument, d.dataexpirare, d.pret FROM document d INNER JOIN masina m ON d.vin = m.vin INNER JOIN utilizator u ON m.iduser = u.id WHERE lower(u.username) = lower(:username) ORDER BY d.iddocument" +
+            "")
+    public List<Object> findToateDocumentele(@Param("username") String username);
 
 }

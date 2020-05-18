@@ -42,4 +42,8 @@ export class PlatformaComponent implements OnInit {
     this.location.replaceState('/myaccount');
   }
 
+  redirectToDocumente(){
+    this.router.navigateByUrl("/documente", {skipLocationChange: true});
+    this.location.replaceState('/documente');
+  }
 }
