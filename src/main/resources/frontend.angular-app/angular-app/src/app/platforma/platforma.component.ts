@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {DataService} from "../services/data.service";
@@ -13,7 +13,7 @@ export class PlatformaComponent implements OnInit {
 
   Message: String;
   utilizatorLogat: Utilizator = null;
-  masiniUtilizatorLogat: Array<Masina> = null;
+  masiniUtilizatorLogat: Array<Masina> = new Array<Masina>();
 
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
   }
@@ -68,5 +68,10 @@ export class PlatformaComponent implements OnInit {
         console.log(data);
       })
     })
+  }
+
+  redirectToGaraj() {
+    this.router.navigateByUrl("/lista-masini", {skipLocationChange: true});
+    this.location.replaceState('/lista-masini');
   }
 }

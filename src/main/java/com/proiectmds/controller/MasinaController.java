@@ -1,5 +1,6 @@
 package com.proiectmds.controller;
 
+import com.proiectmds.repository.MasinaRepository;
 import com.proiectmds.service.MasinaService;
 import com.proiectmds.model.Masina;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,25 @@ public class MasinaController extends SpringBootServletInitializer {
 
     @Autowired
     MasinaService masinaService;
+    @Autowired
+    MasinaRepository masinaRepository;
 
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/toate-marcile", method = RequestMethod.GET)
     public List<Masina> getMasiniByMarca(@RequestBody Map<String, String> payload){
         return masinaService.gasesteToateMasinileDupaMarca(payload.get("marca"));
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/masini-useri", method = RequestMethod.GET)
+    public List<Masina> getMasiniByUserid(@RequestBody Map<String, Integer> payload){
+        return masinaService.gasesteToateMasinileDupaIduser(payload.get("iduser"));
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/masini-id", method = RequestMethod.GET)
+    public List<Masina> getMasiniByid(@RequestBody Map<String, Integer> payload){
+        return masinaService.gasesteToateMasinileDupaId(payload.get("id"));
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -37,15 +52,13 @@ public class MasinaController extends SpringBootServletInitializer {
     public void delete(@RequestBody Map<String, Integer> payload){
         masinaService.deleteMasinaDupaId(payload.get("id"));
     }
-    /*
-    @RequestMapping(value = "/editeaza-masina-vin", method = RequestMethod.POST)
-    public ModelAndView showVin(@PathVariable(name = "vin") String vin) {
-        ModelAndView mav = new ModelAndView("edit_product");
-        List<Masina> masini = masinaService.gasesteMasinaDupaVin(vin);
-        mav.addObject("masini",masini);
-        return mav;
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/update-masina", method = RequestMethod.PUT)
+    public void update(@RequestBody Masina masina){
+        masinaRepository.save(masina);
     }
-    */
+
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping("/masini")
     public List<Masina> getAllMasini(){

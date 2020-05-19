@@ -38,7 +38,7 @@ export class CarLogService {
   utilizator: Utilizator;
   username: String;
   masiniUtilizatorLogat: Array<Masina>;
-  documenteUtilizatorLogat: Array<Document> = new Array<Document>();
+  // documenteUtilizatorLogat: Array<Document> = new Array<Document>();
 
   private _documenteUtilizatorLogatSource = new Subject<Array<Document>>();
   documenteUtilizatorLogat$ = this._documenteUtilizatorLogatSource.asObservable();
@@ -51,16 +51,16 @@ export class CarLogService {
     contentData.forEach(entry => {
       dummyArray.push(entry);
     })
-    this.documenteUtilizatorLogat = dummyArray;
+    // this.documenteUtilizatorLogat = dummyArray;
 
     this._documenteUtilizatorLogatSource.next(dummyArray);
 
-    console.log("le-am setat anplm", this.documenteUtilizatorLogat);
+    // console.log("le-am setat anplm", this.documenteUtilizatorLogat);
   }
 
   getDocumenteUtilizatorLogat() {
     console.log("na-ti getDocumenteDinServiciu");
-    return this.documenteUtilizatorLogat;
+    return this.documenteUtilizatorLogat$;
   }
 
   setMasiniUtilizatorLogat(contentData) {

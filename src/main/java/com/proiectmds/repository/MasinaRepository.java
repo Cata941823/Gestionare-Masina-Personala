@@ -10,5 +10,5 @@ import java.util.List;
 public interface MasinaRepository extends JpaRepository<Masina, Integer> {
     List<Masina> findByMarca(String marca);
     List<Masina> findByIduser(int id);
-   // List<Masina> get(String vin);
+    List<Masina> findById(int id);
 }
