@@ -18,6 +18,10 @@ public class MasinaService {
         return masinaRepository.findByMarca(marca);
     }
 
+    public List<Masina> gasesteToateMasinileDupaIduser(int iduser){return masinaRepository.findByIduser(iduser);}
+
+    public List<Masina> gasesteToateMasinileDupaId(int id){return masinaRepository.findById(id);}
+
     public void insertMasina(Masina masina){
         System.out.println("-------------\n");
         System.out.println(masina);
@@ -28,14 +32,10 @@ public class MasinaService {
         masinaRepository.deleteById(id);
     }
 
-    /*public List<Masina> gasesteMasinaDupaVin(String vin) {
-        return masinaRepository.get(vin);
-    }
-    */
-
     public List<Masina> getAllMasina(){
         List<Masina> masina = new ArrayList<Masina>();
         masinaRepository.findAll().forEach(s -> masina.add(s));
         return masina;
     }
+
 }

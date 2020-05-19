@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
-@Entity(name="masini")
+@Entity(name="masina")
 public class Masina {
 
     @Id
@@ -20,11 +20,12 @@ public class Masina {
     private String nrinmatriculare;
     private Date dataachizitie;
     private String tipcombustibil;
+    private int pret;
 
     public Masina(){};
 
-    public Masina(int idmasina, String VIN, int iduser, String marca, String model, String nrinmatriculare, Date dataachizitie, String tipcombustibil) {
-        this.id = idmasina;
+    public Masina(int id, String VIN, int iduser, String marca, String model, String nrinmatriculare, Date dataachizitie, String tipcombustibil, int pret) {
+        this.id = id;
         this.vin = VIN;
         this.iduser = iduser;
         this.marca = marca;
@@ -32,14 +33,15 @@ public class Masina {
         this.nrinmatriculare = nrinmatriculare;
         this.dataachizitie = dataachizitie;
         this.tipcombustibil = tipcombustibil;
+        this.pret = pret;
     }
 
-    public int getId() {
+    public int getid() {
         return id;
     }
 
-    public void setId(int idmasina) {
-        this.id = idmasina;
+    public void setid(int id) {
+        this.id = id;
     }
 
     public String getVin() {
@@ -98,17 +100,26 @@ public class Masina {
         this.tipcombustibil = tipcombustibil;
     }
 
+    public int getPret() {
+        return pret;
+    }
+
+    public void setPret(int pret) {
+        this.pret = pret;
+    }
+
     @Override
     public String toString() {
         return "Masina{" +
-                "idmasina=" + id +
-                ", VIN='" + vin + '\'' +
+                "id=" + id +
+                ", vin='" + vin + '\'' +
                 ", iduser=" + iduser +
                 ", marca='" + marca + '\'' +
                 ", model='" + model + '\'' +
                 ", nrinmatriculare='" + nrinmatriculare + '\'' +
                 ", dataachizitie=" + dataachizitie +
                 ", tipcombustibil='" + tipcombustibil + '\'' +
+                ", pret=" + pret +
                 '}';
     }
 }
