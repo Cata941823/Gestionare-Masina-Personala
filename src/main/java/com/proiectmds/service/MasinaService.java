@@ -40,4 +40,8 @@ public class MasinaService {
         masinaRepository.findAll().forEach(s -> masina.add(s));
         return masina;
     }
+
+    public List<Masina> findByIduser(int id){
+        return masinaRepository.findByIduser(id);
+    }
 }

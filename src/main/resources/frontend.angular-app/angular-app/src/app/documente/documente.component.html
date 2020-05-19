@@ -11,62 +11,37 @@
   </div>
 </div>
 
+
 <div class="Table-search">
-  <mat-form-field>
-    <mat-label>Filtru</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex: alimentare">
-  </mat-form-field>
 
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort>
-
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
-      </ng-container>
-
-      <!-- VIN Column -->
-      <ng-container matColumnDef="vin">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> VIN</th>
-
-      </ng-container>
-
-      <!-- Tip document Column -->
-      <ng-container matColumnDef="tipdocument">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tip document</th>
-
-      </ng-container>
-
-      <!-- Data expirare Column -->
-      <ng-container matColumnDef="dataexpirare">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Data expirare</th>
-
-      </ng-container>
-
-      <!-- Pret Column -->
-      <ng-container matColumnDef="pret">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Pret</th>
-      </ng-container>
-
-      <!-- Imagine Column -->
-      <ng-container matColumnDef="imagine">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Imagine</th>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-
+  <table id="docs">
+    <tr>
+      <th>ID Document</th>
+      <th>VIN</th>
+      <th>Tip document</th>
+      <th>Data expirare</th>
+      <th>Pret</th>
+    </tr>
+    <ng-container *ngFor="let doc of documenteUtilizatorLogat">
+      <tr>
+        <td>{{doc.iddocument}}</td>
+        <td>{{doc.vin}}</td>
+        <td>{{doc.tipdocument}}</td>
+        <td>{{doc.dataexpirare}}</td>
+        <td>{{doc.pret}}</td>
       </tr>
-    </table>
+    </ng-container>
+  </table>
+  <!-- <mat-form-field>
+     <mat-label>Filtru</mat-label>
+     <input matInput (keyup)="applyFilter($event)" placeholder="Ex: alimentare">
+   </mat-form-field>
+ -->
 
-    <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
-  </div>
+  <!--    <table mat-table [dataSource]="dataSource" matSort>-->
+  <!--        <tr *ngFor="#document of dataSource">-->
+  <!--          <td><h1>{{document[0]}}</h1></td>-->
+  <!--        </tr>-->
+  <!--    </table>-->
+
 </div>
-
-<p>ALO: {{dataSource}}</p>
-<p>ALO: {{dataSource[0]}}</p>
-<p>ALO: {{dataSource[1]}}</p>
-<p>ALO: {{dataSource[3]}}</p>
-<p>ALO: {{dataSource[4]}}</p>
-<p>ALO: {{dataSource[5]}}</p>
-<p>ALO: {{dataSource[6]}}</p>

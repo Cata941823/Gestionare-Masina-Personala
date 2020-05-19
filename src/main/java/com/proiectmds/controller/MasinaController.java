@@ -52,5 +52,11 @@ public class MasinaController extends SpringBootServletInitializer {
         return masinaService.getAllMasina();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/masini-utilizator", method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public List<Masina> getMasiniUser(@RequestBody  Map<String, Integer> payload){
+        return masinaService.findByIduser(payload.get("id"));
+    }
 
 }

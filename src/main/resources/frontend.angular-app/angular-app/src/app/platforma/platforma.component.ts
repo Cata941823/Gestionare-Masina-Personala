@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterContentInit, Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {DataService} from "../services/data.service";
-import {CarLogService, Utilizator} from "../services/car-log.service";
+import {CarLogService, Masina, Utilizator} from "../services/car-log.service";
 
 @Component({
   selector: 'app-platforma',
@@ -13,6 +13,7 @@ export class PlatformaComponent implements OnInit {
 
   Message: String;
   utilizatorLogat: Utilizator = null;
+  masiniUtilizatorLogat: Array<Masina> = null;
 
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
   }
@@ -23,6 +24,11 @@ export class PlatformaComponent implements OnInit {
     if (this.Message == null) {
       this.redirectToLogin();
     }
+    this.importMasiniInAplicatie();
+  }
+
+  importMasiniInAplicatie() {
+    this.getMasiniUtilizatorLogat(this.utilizatorLogat.id);
   }
 
   initialiseUtilizatorLogat() {
@@ -37,13 +43,30 @@ export class PlatformaComponent implements OnInit {
     this.location.replaceState('/login');
   }
 
-  redirectToAccount(){
+  redirectToAccount() {
     this.router.navigateByUrl("/myaccount", {skipLocationChange: true});
     this.location.replaceState('/myaccount');
   }
 
-  redirectToDocumente(){
+  redirectToDocumente() {
     this.router.navigateByUrl("/documente", {skipLocationChange: true});
     this.location.replaceState('/documente');
+  }
+
+  getMasiniUtilizatorLogat(id) {
+    this.dataService.getMasiniUtilizatorLogat(id).subscribe(data => {
+      this.carLogService.setMasiniUtilizatorLogat(data);
+      console.log(data);
+    })
+  }
+
+  getDocumente() {
+    this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
+    this.masiniUtilizatorLogat.forEach(entry => {
+      this.dataService.getToateDocumenteleMasinilorUtilizatoruluiLogat(entry.vin).subscribe(data => {
+        this.carLogService.setDocumenteUtilizatorLogat(data);
+        console.log(data);
+      })
+    })
   }
 }

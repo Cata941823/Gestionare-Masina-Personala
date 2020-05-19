@@ -24,6 +24,8 @@ public class DocumenteService {
         return documente;
     }
 
-
+    public List<Documente> getAllByVin(String vin){
+        return documenteReposistory.findByVin(vin);
+    }
 
 }
