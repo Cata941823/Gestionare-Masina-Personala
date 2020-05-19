@@ -24,13 +24,8 @@ public class Masina {
 
     public Masina(){};
 
-<<<<<<< HEAD:src/main/java/com/proiectmds/demo/Masina.java
-    public Masina(int id, String VIN, int iduser, String marca, String model, String nrinmatriculare, Date dataachizitie, String tipcombustibil, int pret) {
-        this.id = id;
-=======
     public Masina(int idmasina, String VIN, int iduser, String marca, String model, String nrinmatriculare, Date dataachizitie, String tipcombustibil, int pret) {
         this.id = idmasina;
->>>>>>> b9b298e2214332aa8635556085c0aed6dacea35f:src/main/java/com/proiectmds/model/Masina.java
         this.vin = VIN;
         this.iduser = iduser;
         this.marca = marca;
@@ -41,12 +36,12 @@ public class Masina {
         this.pret = pret;
     }
 
-    public int getid() {
+    public int getId() {
         return id;
     }
 
-    public void setid(int id) {
-        this.id = id;
+    public void setId(int idmasina) {
+        this.id = idmasina;
     }
 
     public String getVin() {
@@ -105,26 +100,17 @@ public class Masina {
         this.tipcombustibil = tipcombustibil;
     }
 
-    public int getPret() {
-        return pret;
-    }
-
-    public void setPret(int pret) {
-        this.pret = pret;
-    }
-
     @Override
     public String toString() {
         return "Masina{" +
-                "id=" + id +
-                ", vin='" + vin + '\'' +
+                "idmasina=" + id +
+                ", VIN='" + vin + '\'' +
                 ", iduser=" + iduser +
                 ", marca='" + marca + '\'' +
                 ", model='" + model + '\'' +
                 ", nrinmatriculare='" + nrinmatriculare + '\'' +
                 ", dataachizitie=" + dataachizitie +
                 ", tipcombustibil='" + tipcombustibil + '\'' +
-                ", pret=" + pret +
                 '}';
     }
 }

@@ -73,5 +73,4 @@ export class DataService {
     let payload = {username: username};
     return this.httpClient.post<any>(url, payload);
   }
-
 }

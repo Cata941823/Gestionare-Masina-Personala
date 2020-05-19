@@ -37,11 +37,6 @@ export class PlatformaComponent implements OnInit {
     this.location.replaceState('/login');
   }
 
-  redirectToGaraj() {
-    this.router.navigateByUrl("/lista-masini", {skipLocationChange: true});
-    this.location.replaceState('/lista-masini');
-  }
-
   redirectToAccount(){
     this.router.navigateByUrl("/myaccount", {skipLocationChange: true});
     this.location.replaceState('/myaccount');
@@ -52,4 +47,8 @@ export class PlatformaComponent implements OnInit {
     this.location.replaceState('/documente');
   }
 
+  redirectToGaraj() {
+    this.router.navigateByUrl("/lista-masini", {skipLocationChange: true});
+    this.location.replaceState('/lista-masini');
+  }
 }
