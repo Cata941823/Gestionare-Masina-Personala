@@ -18,12 +18,19 @@ import {MatMenuModule} from "@angular/material/menu";
 import { ListaMasiniComponent } from './lista-masini/lista-masini.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ContulMeuComponent } from './contul-meu/contul-meu.component';
+import { DocumenteComponent } from './documente/documente.component';
+import {MatIconModule} from "@angular/material/icon";
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
 
 const appRoutes: Routes = [
   {path: 'signup', component: SignupComponent},
+  {path: 'myaccount', component: ContulMeuComponent},
   {path: 'login', component: LoginComponent},
   {path: 'platforma', component: PlatformaComponent},
   {path: 'lista-masini', component: PlatformaComponent},
+  {path: 'documente', component: DocumenteComponent},
   {path: '', redirectTo: '/signup', pathMatch: 'full'}
 ];
 
@@ -35,7 +42,8 @@ const appRoutes: Routes = [
     PlatformaComponent,
     ListaMasiniComponent,
     AdminPanelComponent,
-    ContulMeuComponent
+    ContulMeuComponent,
+    DocumenteComponent
   ],
     imports: [
         BrowserModule,
@@ -50,7 +58,11 @@ const appRoutes: Routes = [
             appRoutes,
             {enableTracing: true}
         ),
-        MatMenuModule
+        MatMenuModule,
+        MatIconModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-package com.proiectmds.demo;
+package com.proiectmds.model;
 
 import javax.persistence.*;
 

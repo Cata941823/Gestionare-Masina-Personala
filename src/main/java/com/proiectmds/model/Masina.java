@@ -1,4 +1,4 @@
-package com.proiectmds.demo;
+package com.proiectmds.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,8 +24,13 @@ public class Masina {
 
     public Masina(){};
 
+<<<<<<< HEAD:src/main/java/com/proiectmds/demo/Masina.java
     public Masina(int id, String VIN, int iduser, String marca, String model, String nrinmatriculare, Date dataachizitie, String tipcombustibil, int pret) {
         this.id = id;
+=======
+    public Masina(int idmasina, String VIN, int iduser, String marca, String model, String nrinmatriculare, Date dataachizitie, String tipcombustibil, int pret) {
+        this.id = idmasina;
+>>>>>>> b9b298e2214332aa8635556085c0aed6dacea35f:src/main/java/com/proiectmds/model/Masina.java
         this.vin = VIN;
         this.iduser = iduser;
         this.marca = marca;

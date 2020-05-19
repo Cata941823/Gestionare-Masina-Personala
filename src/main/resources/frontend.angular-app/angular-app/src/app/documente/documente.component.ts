@@ -1,15 +1,25 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {DataService} from "../services/data.service";
 import {CarLogService, Utilizator} from "../services/car-log.service";
+import {MatTableDataSource} from "@angular/material/table";
 
+export interface Documentt {
+  iddocument;
+  vin;
+  tipdocumente;
+  dataexpirare;
+  pret;
+
+}
 @Component({
-  selector: 'app-contul-meu',
-  templateUrl: './contul-meu.component.html',
-  styleUrls: ['./contul-meu.component.css']
+  selector: 'app-documente',
+  templateUrl: './documente.component.html',
+  styleUrls: ['./documente.component.css']
 })
-export class ContulMeuComponent implements OnInit {
+
+export class DocumenteComponent implements OnInit {
 
   // DECLARATII VARIABILE
   username: String;
@@ -18,23 +28,17 @@ export class ContulMeuComponent implements OnInit {
   email: String;
   varsta: String;
   utilizatorLogat: Utilizator = null;
-
-  kilometraj;
-  pret_masini;
-  nr_masini;
-  nr_avariatii;
-  total_alimentari;
+  DOCUMENT_DATA;
+  displayedColumns: string[] = ['ID', 'VIN', 'Tip document', 'Data expirare', 'Pret'];
+  dataSource;
 
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
   }
 
   ngOnInit(): void {
     this.initialiseUtilizatorLogat();
-    this.getKilometraj();
-    this.getPretMasini();
-    this.getNrAvariatii();
-    this.getNrMasini();
-    this.getTotalAlimentari();
+    this.getToateDocumentele();
+    this.dataSource = new MatTableDataSource(this.DOCUMENT_DATA);
 
     if (this.username == null) {
       this.redirectToLogin();
@@ -62,39 +66,22 @@ export class ContulMeuComponent implements OnInit {
     this.location.replaceState('/login');
   }
 
-  redirectToDocumente() {
-    this.router.navigateByUrl("/documente", {skipLocationChange: true});
-    this.location.replaceState('/documente');
+  redirectToAccount(){
+    this.router.navigateByUrl("/myaccount", {skipLocationChange: true});
+    this.location.replaceState('/myaccount');
   }
 
-  getKilometraj(){
-    this.dataService.getKilometraj(this.username).subscribe(data => {
-      this.kilometraj = data;
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  getToateDocumentele(){
+    this.dataService.getToateDocumentele(this.username).subscribe(data => {
+      this.DOCUMENT_DATA = data;
+      for (let arr of this.DOCUMENT_DATA){
+        console.log("ALO:", arr);
+      }
     });
   }
-
-  getPretMasini(){
-    this.dataService.getPretMasini(this.username).subscribe(data => {
-      this.pret_masini = data;
-    });
-  }
-
-  getNrMasini(){
-    this.dataService.getNrMasini(this.username).subscribe(data => {
-      this.nr_masini = data;
-    });
-  }
-
-  getNrAvariatii(){
-    this.dataService.getNrAvariatii(this.username).subscribe(data => {
-      this.nr_avariatii = data;
-    });
-  }
-
-  getTotalAlimentari(){
-    this.dataService.getTotalAlimentari(this.username).subscribe(data => {
-      this.total_alimentari = data;
-    });
-  }
-
 }

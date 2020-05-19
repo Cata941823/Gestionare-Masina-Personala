@@ -40,7 +40,6 @@ export class CarLogService {
     return this.utilizator;
   }
 
-
   setUsername(username){
     this.username = username;
   }
@@ -65,4 +64,5 @@ export class CarLogService {
   getMarca(){
     return this.marca;
   }
+
 }

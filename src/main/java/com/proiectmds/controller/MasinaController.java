@@ -1,5 +1,7 @@
-package com.proiectmds.demo;
+package com.proiectmds.controller;
 
+import com.proiectmds.service.MasinaService;
+import com.proiectmds.model.Masina;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.http.HttpStatus;
