@@ -9,22 +9,21 @@ import {Router} from "@angular/router";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
+
+  user;
+  username;
+  parola;
+  catrePlatforma: String = "/login";
+  platform: boolean = false;
+  utilizatorLogat: Utilizator;
 
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
   }
 
   ngOnInit(): void {
   }
-
-  user;
-
-  username;
-  parola;
-  catrePlatforma: String = "/login";
-  platform: boolean = false;
-
-  utilizatorLogat: Utilizator;
 
   signIn() {
     console.log(this.username, this.parola);

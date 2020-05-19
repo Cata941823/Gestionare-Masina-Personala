@@ -52,7 +52,7 @@ public class UtilizatorService {
         return utilizatorReposistory.findTotalAlimentari(username);
     }
 
-    public List<Object> findToateDocumentele(String username){ return utilizatorReposistory.findToateDocumentele(username); }
+    public List<Documente> findToateDocumentele(String username){ return utilizatorReposistory.findToateDocumentele(username); }
 
     public Utilizator logging(String user, String parola){
         return utilizatorReposistory.findByUsernameAndParola(user, parola);

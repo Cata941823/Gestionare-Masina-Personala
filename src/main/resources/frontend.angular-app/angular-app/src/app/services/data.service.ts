@@ -6,6 +6,7 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataService {
 
   baseUrl = "http://localhost:8080/";
@@ -66,7 +67,6 @@ export class DataService {
     let payload = {username: username};
     return this.httpClient.post<any>(url, payload);
   }
-
 
   getToateDocumentele(username): Observable<HttpResponse<any>> {
     let url = this.baseUrl.concat("/search/toatedocumentele");

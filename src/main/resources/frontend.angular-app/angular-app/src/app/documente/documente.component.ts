@@ -2,17 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {DataService} from "../services/data.service";
-import {CarLogService, Utilizator} from "../services/car-log.service";
+import {CarLogService, Documentt, Utilizator} from "../services/car-log.service";
 import {MatTableDataSource} from "@angular/material/table";
 
-export interface Documentt {
-  iddocument;
-  vin;
-  tipdocumente;
-  dataexpirare;
-  pret;
-
-}
 @Component({
   selector: 'app-documente',
   templateUrl: './documente.component.html',
@@ -28,7 +20,8 @@ export class DocumenteComponent implements OnInit {
   email: String;
   varsta: String;
   utilizatorLogat: Utilizator = null;
-  DOCUMENT_DATA;
+  DOCUMENT_DATA: Documentt[];
+  DOCUMENT_DATA_TEMP;
   displayedColumns: string[] = ['ID', 'VIN', 'Tip document', 'Data expirare', 'Pret'];
   dataSource;
 
@@ -78,9 +71,17 @@ export class DocumenteComponent implements OnInit {
 
   getToateDocumentele(){
     this.dataService.getToateDocumentele(this.username).subscribe(data => {
-      this.DOCUMENT_DATA = data;
-      for (let arr of this.DOCUMENT_DATA){
+
+      this.DOCUMENT_DATA_TEMP = data;
+      for (let arr of this.DOCUMENT_DATA_TEMP){
+        let array;
         console.log("ALO:", arr);
+        array.iddocument = arr[0];
+        array.vin = arr[1];
+        array.tipdocumente = arr[2];
+        array.dataexpirare = arr[3];
+        array.pret = arr[4];
+        this.DOCUMENT_DATA.push(array);
       }
     });
   }

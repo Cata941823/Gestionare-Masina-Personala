@@ -73,7 +73,7 @@ public class UtilizatorController extends SpringBootServletInitializer {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/toatedocumentele", method = RequestMethod.POST)
-    public List<Object> getToateDocumentele(@RequestBody Map<String, String> payload){
+    public List<Documente> getToateDocumentele(@RequestBody Map<String, String> payload){
         return utilizatorService.findToateDocumentele(payload.get("username"));
     }
 

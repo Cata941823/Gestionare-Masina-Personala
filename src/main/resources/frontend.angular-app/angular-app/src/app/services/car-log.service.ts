@@ -9,6 +9,15 @@ export class Utilizator{
   email;
 }
 
+export class Documentt {
+  iddocument;
+  vin;
+  tipdocumente;
+  dataexpirare;
+  pret;
+
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +25,7 @@ export class CarLogService {
 
   utilizator: Utilizator;
   username: String;
+
   constructor() { }
 
   setUtitizatorLogat(utilizator) {

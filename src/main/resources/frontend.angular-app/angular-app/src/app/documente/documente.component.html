@@ -12,61 +12,48 @@
 </div>
 
 <div class="Table-search">
+
   <mat-form-field>
-    <mat-label>Filtru</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex: alimentare">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
   </mat-form-field>
 
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
-      </ng-container>
+    <!-- Id documentColumn -->
+    <ng-container matColumnDef="iddocument">
+      <th mat-header-cell *matHeaderCellDef> ID Document </th>
+      <td mat-cell *matCellDef="let element"> {{element.iddocument}} </td>
+    </ng-container>
 
-      <!-- VIN Column -->
-      <ng-container matColumnDef="vin">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> VIN</th>
+    <!-- VIN Column -->
+    <ng-container matColumnDef="vin">
+      <th mat-header-cell *matHeaderCellDef> VIN </th>
+      <td mat-cell *matCellDef="let element"> {{element.vin}} </td>
+    </ng-container>
 
-      </ng-container>
+    <!-- Tip document Column -->
+    <ng-container matColumnDef="tipdocumente">
+      <th mat-header-cell *matHeaderCellDef> Tip document </th>
+      <td mat-cell *matCellDef="let element"> {{element.tipdocumente}} </td>
+    </ng-container>
 
-      <!-- Tip document Column -->
-      <ng-container matColumnDef="tipdocument">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tip document</th>
+    <!-- Data expirare Column -->
+    <ng-container matColumnDef="dataexpirare">
+      <th mat-header-cell *matHeaderCellDef> Data expirare </th>
+      <td mat-cell *matCellDef="let element"> {{element.dataexpirare}} </td>
+    </ng-container>
 
-      </ng-container>
+    <!-- Pret Column -->
+    <ng-container matColumnDef="pret">
+      <th mat-header-cell *matHeaderCellDef> Pret </th>
+      <td mat-cell *matCellDef="let element"> {{element.pret}} </td>
+    </ng-container>
 
-      <!-- Data expirare Column -->
-      <ng-container matColumnDef="dataexpirare">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Data expirare</th>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 
-      </ng-container>
-
-      <!-- Pret Column -->
-      <ng-container matColumnDef="pret">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Pret</th>
-      </ng-container>
-
-      <!-- Imagine Column -->
-      <ng-container matColumnDef="imagine">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Imagine</th>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-
-      </tr>
-    </table>
-
-    <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
-  </div>
 </div>
 
-<p>ALO: {{dataSource}}</p>
-<p>ALO: {{dataSource[0]}}</p>
-<p>ALO: {{dataSource[1]}}</p>
-<p>ALO: {{dataSource[3]}}</p>
-<p>ALO: {{dataSource[4]}}</p>
-<p>ALO: {{dataSource[5]}}</p>
-<p>ALO: {{dataSource[6]}}</p>
+<p>ALO: {{DOCUMENT_DATA_TEMP}}</p>
