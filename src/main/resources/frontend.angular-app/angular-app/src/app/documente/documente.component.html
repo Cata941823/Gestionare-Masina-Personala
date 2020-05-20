@@ -28,20 +28,13 @@
         <td>{{doc.vin}}</td>
         <td>{{doc.tipdocument}}</td>
         <td>{{doc.dataexpirare}}</td>
-        <td>{{doc.pret}}</td>
+        <td>{{doc.pret}} RON</td>
       </tr>
     </ng-container>
   </table>
-  <!-- <mat-form-field>
-     <mat-label>Filtru</mat-label>
-     <input matInput (keyup)="applyFilter($event)" placeholder="Ex: alimentare">
-   </mat-form-field>
- -->
 
-  <!--    <table mat-table [dataSource]="dataSource" matSort>-->
-  <!--        <tr *ngFor="#document of dataSource">-->
-  <!--          <td><h1>{{document[0]}}</h1></td>-->
-  <!--        </tr>-->
-  <!--    </table>-->
+  <button style="margin-top:5%;" (click)="redirectToAddDoc();" mat-raised-button color="primary"> + Adauga un document</button>
+  <button style="margin-left: 5%;margin-top:5%;" (click)="redirectToDelDoc();" mat-raised-button color="warn"> - Sterge un document</button>
+
 
 </div>

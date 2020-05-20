@@ -23,6 +23,10 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
+import { AddDocComponent } from './add-doc/add-doc.component';
+import { DelDocComponent } from './del-doc/del-doc.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 const appRoutes: Routes = [
   {path: 'signup', component: SignupComponent},
@@ -31,6 +35,8 @@ const appRoutes: Routes = [
   {path: 'platforma', component: PlatformaComponent},
   {path: 'lista-masini', component: ListaMasiniComponent},
   {path: 'documente', component: DocumenteComponent},
+  {path: 'add-doc', component: AddDocComponent},
+  {path: 'del-doc', component: DelDocComponent},
   {path: '', redirectTo: '/signup', pathMatch: 'full'}
 ];
 
@@ -43,27 +49,31 @@ const appRoutes: Routes = [
     ListaMasiniComponent,
     AdminPanelComponent,
     ContulMeuComponent,
-    DocumenteComponent
+    DocumenteComponent,
+    AddDocComponent,
+    DelDocComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatInputModule,
-        MatSliderModule,
-        MatButtonModule,
-        FormsModule,
-        RouterModule.forRoot(
-            appRoutes,
-            {enableTracing: true}
-        ),
-        MatMenuModule,
-        MatIconModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatSortModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatSliderModule,
+    MatButtonModule,
+    FormsModule,
+    RouterModule.forRoot(
+      appRoutes,
+      {enableTracing: true}
+    ),
+    MatMenuModule,
+    MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSelectModule,
+    MatDatepickerModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

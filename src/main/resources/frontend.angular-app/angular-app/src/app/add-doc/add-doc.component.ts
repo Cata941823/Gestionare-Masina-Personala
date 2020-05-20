@@ -1,17 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {CarLogService, Document, Masina, Utilizator} from "../services/car-log.service";
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {DataService} from "../services/data.service";
-import {CarLogService, Document, Masina, Utilizator} from "../services/car-log.service";
-
 
 @Component({
-  selector: 'app-documente',
-  templateUrl: './documente.component.html',
-  styleUrls: ['./documente.component.css']
+  selector: 'app-add-doc',
+  templateUrl: './add-doc.component.html',
+  styleUrls: ['./add-doc.component.css']
 })
-
-export class DocumenteComponent implements OnInit {
+export class AddDocComponent implements OnInit {
 
   // DECLARATII VARIABILE
 
@@ -27,6 +25,11 @@ export class DocumenteComponent implements OnInit {
   varsta: String;
   utilizatorLogat: Utilizator = null;
   displayedColumns: ["iddocument", "vin", "tipdocument", "dataexpirare", "pret"];
+  masina: any;
+  brandSiMarcaMasiniUtilizatorLogat: ["iddocument", "vin", "tipdocument", "dataexpirare", "pret"];
+  tipDocumente: any;
+  document: any;
+  pret: any;
 
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
   }
@@ -76,14 +79,8 @@ export class DocumenteComponent implements OnInit {
     this.location.replaceState('/myaccount');
   }
 
-  redirectToAddDoc() {
-    this.router.navigateByUrl("/add-doc", {skipLocationChange: true});
-    this.location.replaceState('/add-doc');
-  }
-
-  redirectToDelDoc() {
-    this.router.navigateByUrl("/del-doc", {skipLocationChange: true});
-    this.location.replaceState('/del-doc');
+  redirectBack(){
+    this.router.navigateByUrl("/documente", {skipLocationChange: true});
+    this.location.replaceState('/documente');
   }
 }
-
