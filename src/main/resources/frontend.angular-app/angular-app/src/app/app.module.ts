@@ -27,6 +27,7 @@ import { AddDocComponent } from './add-doc/add-doc.component';
 import { DelDocComponent } from './del-doc/del-doc.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import { StareTehnicaComponent } from './stare-tehnica/stare-tehnica.component';
 
 const appRoutes: Routes = [
   {path: 'signup', component: SignupComponent},
@@ -51,7 +52,8 @@ const appRoutes: Routes = [
     ContulMeuComponent,
     DocumenteComponent,
     AddDocComponent,
-    DelDocComponent
+    DelDocComponent,
+    StareTehnicaComponent
   ],
   imports: [
     BrowserModule,
