@@ -73,4 +73,20 @@ export class DelDocComponent implements OnInit {
     this.router.navigateByUrl("/myaccount", {skipLocationChange: true});
     this.location.replaceState('/myaccount');
   }
+
+  redirectToDocumente() {
+    this.router.navigateByUrl("/documente", {skipLocationChange: true});
+    this.location.replaceState('/documente');
+  }
+
+  getDocumente() {
+    this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
+    this.masiniUtilizatorLogat.forEach(entry => {
+      //this.listaNumeMasini.push(entry.marca);
+      this.dataService.getToateDocumenteleMasinilorUtilizatoruluiLogat(entry.vin).subscribe(data => {
+        this.carLogService.setDocumenteUtilizatorLogat(data);
+        console.log(data);
+      })
+    })
+  }
 }

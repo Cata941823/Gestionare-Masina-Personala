@@ -16,28 +16,27 @@
 
   <form class="adddoc-form">
 
+<!--    <input [(ngModel)]="firstname" name="something">-->
+
     <mat-form-field class="adddoc-full-width">
       <mat-label>Selecteaza masina</mat-label>
-      <mat-select>
-        <mat-option [(ngModel)]="masina">Volvo XC60</mat-option>
-        <mat-option [(ngModel)]="masina">BMW X5</mat-option>
-        <mat-option [(ngModel)]="masina">LOGAN 2019</mat-option>
+      <mat-select [(ngModel)]="vim_masina" name="VIM">
+        <mat-option *ngFor="let item of masiniUtilizatorLogat" value="{{item.vin}}" >{{item.vin}}</mat-option>
       </mat-select>
     </mat-form-field>
+
 
     <mat-form-field class="adddoc-full-width">
       <mat-label>Tip document</mat-label>
-      <mat-select>
-        <mat-option [(ngModel)]="document" value="{{tipDocumente}}">Document</mat-option>
+      <mat-select [(ngModel)]="document_masina" name="Document">
+        <mat-option *ngFor="let item of denumiriDocumente" value="{{item}}" >{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
 
-<!--    <mat-form-field class="adddoc-full-width">-->
-<!--      <mat-label>Data expirare</mat-label>-->
-<!--      <input matInput [matDatepicker]="picker">-->
-<!--      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
-<!--      <mat-datepicker #picker></mat-datepicker>-->
-<!--    </mat-form-field>-->
+    <label for="start">Data expirare:</label>
+    <input [(ngModel)] = "data_expirare" type="date" id="start" name="trip-start"
+           value=""
+           min="2020-01-01" max="2022-12-31">
 
     <mat-form-field class="adddoc-full-width">
       <mat-label>Pret</mat-label>
@@ -45,8 +44,9 @@
     </mat-form-field>
 
 
-    <button class="adddoc-button" mat-raised-button color="primary">Adauga document</button>
-    <button  style="margin-left: 5%;" (click)="redirectBack();"  mat-raised-button color="warn"> Back</button>
+    <button class="adddoc-button" mat-raised-button color="primary" (click)="adaugaDocument();">Adauga document</button>
+    <button  style="margin-left: 5%;" (click)="getDocumente();redirectBack();"  mat-raised-button color="warn"> Back</button>
 
   </form>
+  <p style="margin: 0px auto;">{{show_message}}</p>
 </div>

@@ -33,8 +33,16 @@
     </ng-container>
   </table>
 
-  <button style="margin-top:5%;" (click)="redirectToAddDoc();" mat-raised-button color="primary"> + Adauga un document</button>
-  <button style="margin-left: 5%;margin-top:5%;" (click)="redirectToDelDoc();" mat-raised-button color="warn"> - Sterge un document</button>
+  <button style="width: 100%;" (click)="redirectToAddDoc();" mat-raised-button color="primary"> + Adauga un document</button>
 
+  <br>
+  <br>
+  <br>
+  <br>  <mat-form-field>
+    <mat-label>ID Document</mat-label>
+    <input matInput [(ngModel)]="id_doc_stergere" type="number" name="id_doc_stergere">
+  </mat-form-field>
+  <button style="width: 100%;" (click)="stergereDocument();redirectToDelDoc();" mat-raised-button color="warn"> - Sterge un document</button>
+  <p style="text-align: center; color: red; font-size: 20px;">{{show_message}}</p>
 
 </div>

@@ -27,6 +27,8 @@ export class DocumenteComponent implements OnInit {
   varsta: String;
   utilizatorLogat: Utilizator = null;
   displayedColumns: ["iddocument", "vin", "tipdocument", "dataexpirare", "pret"];
+  id_doc_stergere: any;
+  show_message: string;
 
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
   }
@@ -85,5 +87,19 @@ export class DocumenteComponent implements OnInit {
     this.router.navigateByUrl("/del-doc", {skipLocationChange: true});
     this.location.replaceState('/del-doc');
   }
+
+
+
+  stergereDocument() {
+    let id: any;
+    id = this.id_doc_stergere;
+    this.dataService.stergereDocument(id).subscribe(data => {
+      if (data == null) {
+        this.show_message = "Document sters!";
+        this.carLogService.setUtitizatorLogat(this.utilizatorLogat);
+      }
+    });
+  }
+
 }
 

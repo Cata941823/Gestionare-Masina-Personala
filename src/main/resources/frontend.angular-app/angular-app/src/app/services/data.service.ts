@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpRequest, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpEvent, HttpHeaders, HttpRequest, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Document} from "./car-log.service";
+
 
 
 @Injectable({
@@ -9,6 +11,7 @@ import {Observable} from "rxjs";
 export class DataService {
 
   baseUrl = "http://localhost:8080";
+  headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private httpClient: HttpClient) {
   }
@@ -85,4 +88,26 @@ export class DataService {
     let payload = {vin: vin};
     return this.httpClient.post<any>(url, payload);
   }
+
+  insertDocument(doc: Document): Observable<HttpRequest<any>>  {
+    let url = this.baseUrl.concat("/search/insert-document");
+    console.log("CUTARE");
+    console.log(doc);
+    let payload = {data: doc};
+    console.log("HAIDA:", payload.data);
+    return this.httpClient.post<any>(url, payload.data);
+  }
+
+  stergereDocument(id: number) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: {
+        id: id
+      },
+    };
+
+    let url = this.baseUrl.concat("/search/delete-document");
+    return this.httpClient.delete(url, options);}
 }
