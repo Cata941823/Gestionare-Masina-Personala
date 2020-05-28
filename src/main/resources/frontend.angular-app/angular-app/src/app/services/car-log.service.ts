@@ -67,6 +67,7 @@ export class CarLogService {
     let dummyArray: Array<Masina> = new Array<Masina>();
     contentData.forEach(entry => {
       dummyArray.push(entry);
+      //console.log("Masina:", )
     })
     this.masiniUtilizatorLogat = dummyArray;
   }
