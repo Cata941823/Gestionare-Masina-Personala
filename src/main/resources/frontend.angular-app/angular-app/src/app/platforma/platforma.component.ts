@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {DataService} from "../services/data.service";
-import {CarLogService, Masina, Utilizator} from "../services/car-log.service";
+import {CarLogService, Document, Masina, Utilizator} from "../services/car-log.service";
 
 @Component({
   selector: 'app-platforma',
@@ -14,6 +14,7 @@ export class PlatformaComponent implements OnInit {
   Message: String;
   utilizatorLogat: Utilizator = null;
   masiniUtilizatorLogat: Array<Masina> = new Array<Masina>();
+  documenteUtilizatorLogat: Array<Document> = null;
 
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
   }
@@ -25,6 +26,8 @@ export class PlatformaComponent implements OnInit {
       this.redirectToLogin();
     }
     this.importMasiniInAplicatie();
+
+    this.initialiseDocumente();
   }
 
   importMasiniInAplicatie() {
@@ -63,12 +66,35 @@ export class PlatformaComponent implements OnInit {
   getDocumente() {
     this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
     this.masiniUtilizatorLogat.forEach(entry => {
+      //this.listaNumeMasini.push(entry.marca);
       this.dataService.getToateDocumenteleMasinilorUtilizatoruluiLogat(entry.vin).subscribe(data => {
         this.carLogService.setDocumenteUtilizatorLogat(data);
         console.log(data);
       })
     })
   }
+  initialiseDocumente(){
+    this.documenteUtilizatorLogat = this.carLogService.documenteUtilizatorLogatx;
+
+    // this.carLogService.documenteUtilizatorLogat$.subscribe(
+    //   info => {
+    //     this.documenteUtilizatorLogat = info;
+    //   }
+    // )
+  }
+
+  // getDocumente() {
+  //   console.log("Razvanescu 1:");
+  //   this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
+  //   console.log("Razvanescu 2:", this.masiniUtilizatorLogat);
+  //   this.masiniUtilizatorLogat.forEach(entry => {
+  //     console.log("Razvanescu 3:", entry.vin);
+  //     this.dataService.getToateDocumenteleMasinilorUtilizatoruluiLogat(entry.vin).subscribe(data => {
+  //       this.carLogService.setDocumenteUtilizatorLogat(data);
+  //       console.log(data);
+  //     })
+  //   })
+  // }
 
   redirectToGaraj() {
     this.router.navigateByUrl("/lista-masini", {skipLocationChange: true});

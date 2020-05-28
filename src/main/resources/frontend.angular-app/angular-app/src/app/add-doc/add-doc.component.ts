@@ -58,11 +58,12 @@ export class AddDocComponent implements OnInit {
   }
 
   initialiseDocumente() {
-    this.carLogService.documenteUtilizatorLogat$.subscribe(
-      info => {
-        this.documenteUtilizatorLogat = info;
-      }
-    )
+    this.documenteUtilizatorLogat = this.carLogService.documenteUtilizatorLogatx;
+    // this.carLogService.documenteUtilizatorLogat$.subscribe(
+    //   info => {
+    //     this.documenteUtilizatorLogat = info;
+    //   }
+    // )
   }
 
   initialiseUtilizatorLogat() {
