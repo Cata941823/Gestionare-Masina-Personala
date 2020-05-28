@@ -20,6 +20,7 @@ export class Masina {
   nrinmatriculare;
   dataachizitie;
   tipcombustibil;
+  pret;
 }
 
 export class Document {

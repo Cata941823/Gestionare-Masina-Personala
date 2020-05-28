@@ -1,21 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import {CarLogService, Masina, Utilizator} from "../services/car-log.service";
+import {CarLogService, Document, Masina, Utilizator} from "../services/car-log.service";
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {DataService} from "../services/data.service";
 
 @Component({
-  selector: 'app-lista-masini',
-  templateUrl: './lista-masini.component.html',
-  styleUrls: ['./lista-masini.component.css']
+  selector: 'app-del-masina',
+  templateUrl: './del-masina.component.html',
+  styleUrls: ['./del-masina.component.css']
 })
-export class ListaMasiniComponent implements OnInit {
-
+export class DelMasinaComponent implements OnInit {
+  // DECLARATII VARIABILE
 
   Message: String;
+  masiniUtilizatorLogat: Array<Masina> = null;
+  documenteUtilizatorLogat: Array<Document> = null;
+
+  id;
+  username: String;
+  nume: String;
+  prenume: String;
+  email: String;
+  varsta: String;
   utilizatorLogat: Utilizator = null;
-  masiniUtilizatorLogat: Array<Masina> = new Array<Masina>();
-  id_car_stergere: any;
+  displayedColumns: ["iddocument", "vin", "tipdocument", "dataexpirare", "pret"];
 
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
   }
@@ -23,18 +31,38 @@ export class ListaMasiniComponent implements OnInit {
   ngOnInit(): void {
     this.initialiseUtilizatorLogat();
 
-    if (this.Message == null) {
+    if (this.username == null) {
       this.redirectToLogin();
     }
 
-    this.getDocumente();
+    this.initialiseDocumente();
+  }
+
+  initialiseDocumente(){
+    this.documenteUtilizatorLogat = this.carLogService.documenteUtilizatorLogatx;
+
+    // this.carLogService.documenteUtilizatorLogat$.subscribe(
+    //   info => {
+    //     this.documenteUtilizatorLogat = info;
+    //   }
+    // )
   }
 
   initialiseUtilizatorLogat() {
     this.utilizatorLogat = this.carLogService.getUtilizatorLogat();
     if (this.utilizatorLogat) {
-      this.Message = this.utilizatorLogat.username;
+      this.id = this.utilizatorLogat.id;
+      this.username = this.utilizatorLogat.username;
+      this.nume = this.utilizatorLogat.nume;
+      this.prenume = this.utilizatorLogat.prenume;
+      this.varsta = this.utilizatorLogat.varsta;
+      this.email = this.utilizatorLogat.email;
     }
+  }
+
+  redirectToPlatform() {
+    this.router.navigateByUrl("/platforma", {skipLocationChange: true});
+    this.location.replaceState('/platforma');
   }
 
   redirectToLogin() {
@@ -42,26 +70,25 @@ export class ListaMasiniComponent implements OnInit {
     this.location.replaceState('/login');
   }
 
-  redirectToAccount(){
+  redirectToAccount() {
     this.router.navigateByUrl("/myaccount", {skipLocationChange: true});
     this.location.replaceState('/myaccount');
   }
 
-  redirectToDocumente(){
+  redirectToDocumente() {
     this.router.navigateByUrl("/documente", {skipLocationChange: true});
     this.location.replaceState('/documente');
   }
 
-  redirectToGaraj() {
+  redirectToMasina() {
     this.router.navigateByUrl("/lista-masini", {skipLocationChange: true});
     this.location.replaceState('/lista-masini');
   }
 
-
   getDocumente() {
     this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
-    console.log("Masinute:", this.masiniUtilizatorLogat);
     this.masiniUtilizatorLogat.forEach(entry => {
+      //this.listaNumeMasini.push(entry.marca);
       this.dataService.getToateDocumenteleMasinilorUtilizatoruluiLogat(entry.vin).subscribe(data => {
         this.carLogService.setDocumenteUtilizatorLogat(data);
         console.log(data);
@@ -69,20 +96,4 @@ export class ListaMasiniComponent implements OnInit {
     })
   }
 
-  addCar() {
-    this.router.navigateByUrl("/add-car", {skipLocationChange: true});
-    this.location.replaceState('/add-car');
-  }
-
-  delCar() {
-    let id: any;
-    id = this.id_car_stergere;
-    this.dataService.deleteMasina(id).subscribe(data => {
-      if (data == null) {
-        this.carLogService.setUtitizatorLogat(this.utilizatorLogat);
-        this.router.navigateByUrl("/del-car", {skipLocationChange: true});
-        this.location.replaceState('/del-car');
-      }
-    });
-  }
 }

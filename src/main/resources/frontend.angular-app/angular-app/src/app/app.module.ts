@@ -28,6 +28,8 @@ import { DelDocComponent } from './del-doc/del-doc.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { StareTehnicaComponent } from './stare-tehnica/stare-tehnica.component';
+import { AddMasinaComponent } from './add-masina/add-masina.component';
+import { DelMasinaComponent } from './del-masina/del-masina.component';
 
 const appRoutes: Routes = [
   {path: 'signup', component: SignupComponent},
@@ -38,6 +40,8 @@ const appRoutes: Routes = [
   {path: 'documente', component: DocumenteComponent},
   {path: 'add-doc', component: AddDocComponent},
   {path: 'del-doc', component: DelDocComponent},
+  {path: 'add-car', component: AddMasinaComponent},
+  {path: 'del-car', component: DelMasinaComponent},
   {path: '', redirectTo: '/signup', pathMatch: 'full'}
 ];
 
@@ -53,7 +57,9 @@ const appRoutes: Routes = [
     DocumenteComponent,
     AddDocComponent,
     DelDocComponent,
-    StareTehnicaComponent
+    StareTehnicaComponent,
+    AddMasinaComponent,
+    DelMasinaComponent
   ],
   imports: [
     BrowserModule,

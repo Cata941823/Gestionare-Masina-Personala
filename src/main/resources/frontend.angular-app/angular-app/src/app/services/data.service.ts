@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpEvent, HttpHeaders, HttpRequest, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Document} from "./car-log.service";
+import {Document, Masina} from "./car-log.service";
 
 
 
@@ -110,4 +110,28 @@ export class DataService {
 
     let url = this.baseUrl.concat("/search/delete-document");
     return this.httpClient.delete(url, options);}
+
+  insertCar(car: Masina): Observable<HttpRequest<any>> {
+    let url = this.baseUrl.concat("/search/adauga-masina");
+    console.log("CUTARE");
+    console.log(car);
+    let payload = {data: car};
+    console.log("HAIDA:", payload.data);
+    return this.httpClient.post<any>(url, payload.data);
+  }
+
+  deleteMasina(id: number) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: {
+        id: id
+      },
+    };
+
+    let url = this.baseUrl.concat("/search/sterge-masina");
+    return this.httpClient.delete(url, options);}
+
+
 }

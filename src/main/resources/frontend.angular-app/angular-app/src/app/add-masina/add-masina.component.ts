@@ -1,21 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import {CarLogService, Masina, Utilizator} from "../services/car-log.service";
+import {CarLogService, Document, Masina, Utilizator} from "../services/car-log.service";
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {DataService} from "../services/data.service";
 
 @Component({
-  selector: 'app-lista-masini',
-  templateUrl: './lista-masini.component.html',
-  styleUrls: ['./lista-masini.component.css']
+  selector: 'app-add-masina',
+  templateUrl: './add-masina.component.html',
+  styleUrls: ['./add-masina.component.css']
 })
-export class ListaMasiniComponent implements OnInit {
 
+export class AddMasinaComponent implements OnInit {
 
   Message: String;
   utilizatorLogat: Utilizator = null;
   masiniUtilizatorLogat: Array<Masina> = new Array<Masina>();
-  id_car_stergere: any;
+  vin_masina: any;
+  marca_masina: any;
+  model_masina: any;
+  nr_masina: any;
+  data_achizitie: any;
+  combustibil: any;
+  pret_masina: any;
+  show_message: any;
 
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
   }
@@ -27,7 +34,12 @@ export class ListaMasiniComponent implements OnInit {
       this.redirectToLogin();
     }
 
-    this.getDocumente();
+    this.importMasiniInAplicatie();
+    this.getMasini();
+  }
+
+  importMasiniInAplicatie() {
+    this.getMasiniUtilizatorLogat(this.utilizatorLogat.id);
   }
 
   initialiseUtilizatorLogat() {
@@ -57,7 +69,12 @@ export class ListaMasiniComponent implements OnInit {
     this.location.replaceState('/lista-masini');
   }
 
-
+  getMasiniUtilizatorLogat(id) {
+    this.dataService.getMasiniUtilizatorLogat(id).subscribe(data => {
+      this.carLogService.setMasiniUtilizatorLogat(data);
+      console.log(data);
+    })
+  }
   getDocumente() {
     this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
     console.log("Masinute:", this.masiniUtilizatorLogat);
@@ -69,20 +86,29 @@ export class ListaMasiniComponent implements OnInit {
     })
   }
 
-  addCar() {
-    this.router.navigateByUrl("/add-car", {skipLocationChange: true});
-    this.location.replaceState('/add-car');
-  }
+  adaugaMasina() {
+    let car: Masina = new Masina();
+    car.vin = this.vin_masina;
+    car.nrinmatriculare = this.nr_masina;
+    car.tipcombustibil = this.combustibil;
+    car.dataachizitie = this.data_achizitie;
+    car.model = this.model_masina;
+    car.marca = this.marca_masina;
+    car.iduser = this.utilizatorLogat.id;
+    car.pret = this.pret_masina;
 
-  delCar() {
-    let id: any;
-    id = this.id_car_stergere;
-    this.dataService.deleteMasina(id).subscribe(data => {
+    this.dataService.insertCar(car).subscribe(data => {
       if (data == null) {
-        this.carLogService.setUtitizatorLogat(this.utilizatorLogat);
-        this.router.navigateByUrl("/del-car", {skipLocationChange: true});
-        this.location.replaceState('/del-car');
+        this.show_message = "Masina adaugata cu succes!";
       }
     });
+  }
+
+  getMasini() {
+
+  }
+
+  redirectBack() {
+
   }
 }
