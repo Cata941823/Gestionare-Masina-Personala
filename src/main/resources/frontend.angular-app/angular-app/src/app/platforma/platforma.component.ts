@@ -14,7 +14,8 @@ export class PlatformaComponent implements OnInit {
   Message: String;
   utilizatorLogat: Utilizator = null;
   masiniUtilizatorLogat: Array<Masina> = new Array<Masina>();
-  documenteUtilizatorLogat: Array<Document> = null;
+ // documenteUtilizatorLogat: Array<Document> = null;
+  documenteUtilizatorLogat: Array<Document> = new Array<Document>();
 
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
   }
@@ -25,9 +26,16 @@ export class PlatformaComponent implements OnInit {
     if (this.Message == null) {
       this.redirectToLogin();
     }
+
     this.importMasiniInAplicatie();
+   // this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
+
+    this.getDocumente();
+
 
     this.initialiseDocumente();
+
+
   }
 
   importMasiniInAplicatie() {
@@ -65,15 +73,18 @@ export class PlatformaComponent implements OnInit {
 
   getDocumente() {
     this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
+    console.log("MASINI UTLIZATOR LOGAT", this.masiniUtilizatorLogat);
     this.masiniUtilizatorLogat.forEach(entry => {
       //this.listaNumeMasini.push(entry.marca);
       this.dataService.getToateDocumenteleMasinilorUtilizatoruluiLogat(entry.vin).subscribe(data => {
         this.carLogService.setDocumenteUtilizatorLogat(data);
-        console.log(data);
+        //this.documenteUtilizatorLogat = this.carLogService.documenteUtilizatorLogatx;
+        console.log("LALALALALLA documenteeelelle", data);
       })
     })
   }
   initialiseDocumente(){
+    console.log("MASINI UTLIZATOR LOGAT2 !!",  this.documenteUtilizatorLogat);
     this.documenteUtilizatorLogat = this.carLogService.documenteUtilizatorLogatx;
 
     // this.carLogService.documenteUtilizatorLogat$.subscribe(
