@@ -1,1 +1,40 @@
-<p>lista-masini works!</p>
+<div class="meniu">
+  <div class="logo">
+
+  </div>
+  <div class="submeniu">
+    <button mat-button (click)="redirectToGaraj();">Garaj</button>
+    <button mat-button>Stare tehnica</button>
+    <button mat-button (click)="redirectToDocumente();">Documente</button>
+    <button mat-button (click)="redirectToAccount();">{{Message}}</button>
+
+  </div>
+</div>
+
+<div class="flex-container">
+  <div>Masina 1 aici</div>
+  <button mat-mini-fab color="primary" aria-label="Drop down menu example" class="mini-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div>Masina 2 aici</div>
+  <button mat-mini-fab color="primary" aria-label="Drop down menu example" class="mini-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div>Masina 3 aici</div>
+  <button mat-mini-fab color="primary" aria-label="Drop down menu example" class="mini-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+</div>
+<div class="buttons">
+  <div class="button">
+    <button mat-fab color="accent" aria-label="Adauga o masina">
+      <mat-icon>plus_one</mat-icon>
+    </button>
+  </div>
+  <div class="button">
+    <button mat-fab color="primary" aria-label="Sterge o masina">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>
+

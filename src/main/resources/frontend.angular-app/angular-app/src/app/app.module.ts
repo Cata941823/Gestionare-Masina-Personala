@@ -29,6 +29,7 @@ const appRoutes: Routes = [
   {path: 'myaccount', component: ContulMeuComponent},
   {path: 'login', component: LoginComponent},
   {path: 'platforma', component: PlatformaComponent},
+  {path: 'lista-masini', component: ListaMasiniComponent},
   {path: 'documente', component: DocumenteComponent},
   {path: '', redirectTo: '/signup', pathMatch: 'full'}
 ];

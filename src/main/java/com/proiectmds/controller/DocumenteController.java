@@ -1,9 +1,11 @@
 package com.proiectmds.controller;
 
+import com.proiectmds.model.Masina;
 import com.proiectmds.service.DocumenteService;
 import com.proiectmds.model.Documente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +29,13 @@ public class DocumenteController extends SpringBootServletInitializer {
     @RequestMapping("/documents")
     public List<Documente> getAllDocumente(){
         return documenteService.getAllDocumente();
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/documente-utilizator", method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public List<Documente> getDocumenteUtilizator(@RequestBody  Map<String, String> payload){
+        return documenteService.getAllByVin(payload.get("vin"));
     }
 }
 

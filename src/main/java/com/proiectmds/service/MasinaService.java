@@ -20,6 +20,10 @@ public class MasinaService {
         return masinaRepository.findByMarca(marca);
     }
 
+    public List<Masina> gasesteToateMasinileDupaIduser(int iduser){return masinaRepository.findByIduser(iduser);}
+
+    public List<Masina> gasesteToateMasinileDupaId(int id){return masinaRepository.findById(id);}
+
     public void insertMasina(Masina masina){
         System.out.println("-------------\n");
         System.out.println(masina);
@@ -39,5 +43,9 @@ public class MasinaService {
         List<Masina> masina = new ArrayList<Masina>();
         masinaRepository.findAll().forEach(s -> masina.add(s));
         return masina;
+    }
+
+    public List<Masina> findByIduser(int id){
+        return masinaRepository.findByIduser(id);
     }
 }

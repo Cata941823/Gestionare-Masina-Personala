@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
 
 export class DataService {
 
-  baseUrl = "http://localhost:8080/";
+  baseUrl = "http://localhost:8080";
 
   constructor(private httpClient: HttpClient) {
   }
@@ -71,6 +71,18 @@ export class DataService {
   getToateDocumentele(username): Observable<HttpResponse<any>> {
     let url = this.baseUrl.concat("/search/toatedocumentele");
     let payload = {username: username};
+    return this.httpClient.post<any>(url, payload);
+  }
+
+  getMasiniUtilizatorLogat(id): Observable<HttpRequest<any>>{
+    let url = this.baseUrl.concat("/search/masini-utilizator");
+    let payload = {id: id};
+    return this.httpClient.post<any>(url, payload);
+  }
+
+  getToateDocumenteleMasinilorUtilizatoruluiLogat(vin): Observable<HttpRequest<any>>{
+    let url = this.baseUrl.concat("/search/documente-utilizator");
+    let payload = {vin: vin};
     return this.httpClient.post<any>(url, payload);
   }
 }

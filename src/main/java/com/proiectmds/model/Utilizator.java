@@ -18,13 +18,22 @@ public class Utilizator {
 
     public Utilizator(){ };
 
-    public Utilizator(String username, String parola, String nume, String prenume, String varsta, String email) {
+    public Utilizator(int id, String username, String parola, String nume, String prenume, String varsta, String email) {
+        this.id = id;
         this.username = username;
         this.parola = parola;
         this.nume = nume;
         this.prenume = prenume;
         this.varsta = varsta;
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {

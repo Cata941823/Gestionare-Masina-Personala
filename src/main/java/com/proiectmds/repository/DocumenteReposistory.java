@@ -10,5 +10,6 @@ import java.util.List;
 public interface DocumenteReposistory extends JpaRepository<Documente, Integer>{
 
     List <Documente> findByIddocument(int iddocument);
+    List <Documente> findByVin(String vin);
 
 }
