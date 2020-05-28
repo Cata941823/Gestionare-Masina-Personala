@@ -9,6 +9,7 @@ import {DataService} from "../services/data.service";
   templateUrl: './add-doc.component.html',
   styleUrls: ['./add-doc.component.css']
 })
+
 export class AddDocComponent implements OnInit {
 
   // DECLARATII VARIABILE
@@ -52,6 +53,7 @@ export class AddDocComponent implements OnInit {
 
     this.initialiseDocumente();
     this.getDocumente();
+    this.redirectToAddDoc();
     console.log("Catalin:", this.masiniUtilizatorLogat);
     //console.log("Razvan:", this.listaNumeMasini);
 
@@ -93,6 +95,11 @@ export class AddDocComponent implements OnInit {
     this.location.replaceState('/myaccount');
   }
 
+  redirectToAddDoc() {
+    this.router.navigateByUrl("/add-doc", {skipLocationChange: true});
+    this.location.replaceState('/add-doc');
+  }
+
   getDocumente() {
     this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
 
@@ -100,6 +107,10 @@ export class AddDocComponent implements OnInit {
     this.location.replaceState('/documente');
   }
 
+  redirectToDocumente() {
+    this.router.navigateByUrl("/documente", {skipLocationChange: true});
+    this.location.replaceState('/documente');
+  }
   adaugaDocument() {
 
     let doc: Document = new Document();

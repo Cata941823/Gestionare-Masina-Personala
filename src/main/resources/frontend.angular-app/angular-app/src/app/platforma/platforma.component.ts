@@ -30,10 +30,13 @@ export class PlatformaComponent implements OnInit {
     this.importMasiniInAplicatie();
    // this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
 
+    console.log("MASINUTE IN PLATFORMA: ", this.masiniUtilizatorLogat);
+
+    this.initialiseDocumente();
     this.getDocumente();
 
 
-    this.initialiseDocumente();
+
 
 
   }
@@ -72,6 +75,7 @@ export class PlatformaComponent implements OnInit {
   }
 
   getDocumente() {
+
     this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
     console.log("MASINI UTLIZATOR LOGAT", this.masiniUtilizatorLogat);
     this.masiniUtilizatorLogat.forEach(entry => {
@@ -84,9 +88,9 @@ export class PlatformaComponent implements OnInit {
     })
   }
   initialiseDocumente(){
-    console.log("MASINI UTLIZATOR LOGAT2 !!",  this.documenteUtilizatorLogat);
-    this.documenteUtilizatorLogat = this.carLogService.documenteUtilizatorLogatx;
 
+    this.documenteUtilizatorLogat = this.carLogService.documenteUtilizatorLogatx;
+    console.log("MASINI UTLIZATOR LOGAT2 !!",  this.documenteUtilizatorLogat);
     // this.carLogService.documenteUtilizatorLogat$.subscribe(
     //   info => {
     //     this.documenteUtilizatorLogat = info;

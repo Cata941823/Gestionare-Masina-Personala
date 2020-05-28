@@ -44,8 +44,8 @@
     </mat-form-field>
 
 
-    <button class="adddoc-button" mat-raised-button color="primary" (click)="adaugaDocument();">Adauga document</button>
-    <button  style="margin-left: 5%;" (click)="getMasini();"  mat-raised-button color="warn"> Back</button>
+    <button class="adddoc-button" mat-raised-button color="primary" (click)="adaugaDocument();redirectToPlatform();">Adauga document</button>
+    <button  style="margin-left: 5%;" (click)="getDocumente();redirectToDocumente();"  mat-raised-button color="warn"> Back</button>
 
   </form>
   <p style="margin: 0px auto;">{{show_message}}</p>

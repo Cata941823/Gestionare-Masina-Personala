@@ -104,6 +104,7 @@ export class DocumenteComponent implements OnInit {
     this.location.replaceState('/add-doc');
   }
 
+
   redirectToDelDoc() {
     this.router.navigateByUrl("/del-doc", {skipLocationChange: true});
     this.location.replaceState('/del-doc');
