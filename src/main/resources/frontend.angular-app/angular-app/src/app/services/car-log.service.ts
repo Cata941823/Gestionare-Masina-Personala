@@ -20,6 +20,7 @@ export class Masina {
   nrinmatriculare;
   dataachizitie;
   tipcombustibil;
+  pret;
 }
 
 export class Document {
@@ -38,7 +39,8 @@ export class CarLogService {
   utilizator: Utilizator;
   username: String;
   masiniUtilizatorLogat: Array<Masina>;
-  // documenteUtilizatorLogat: Array<Document> = new Array<Document>();
+  documenteUtilizatorLogatx: Array<Document> = new Array<Document>();
+  documenteUtilizatorLogaty: Array<Document> = new Array<Document>();
 
   private _documenteUtilizatorLogatSource = new Subject<Array<Document>>();
   documenteUtilizatorLogat$ = this._documenteUtilizatorLogatSource.asObservable();
@@ -50,25 +52,36 @@ export class CarLogService {
     let dummyArray: Array<Document> = new Array<Document>();
     contentData.forEach(entry => {
       dummyArray.push(entry);
-    })
-    // this.documenteUtilizatorLogat = dummyArray;
+      console.log("Document:", entry);
+    });
 
-    this._documenteUtilizatorLogatSource.next(dummyArray);
+    for(let i = 0; i<dummyArray.length; i++){
+      this.documenteUtilizatorLogaty.push(dummyArray[i]);
+    }
+    this.documenteUtilizatorLogatx = this.documenteUtilizatorLogaty.filter((thing, i, arr) => arr.findIndex(t => t.iddocument === thing.iddocument) === i
+    );
+    // this.documenteUtilizatorLogatx = this.documenteUtilizatorLogaty.filter(function(elem, index, self) {
+    //   return documentut.indexOf(item) == pos;
+    // });
 
-    // console.log("le-am setat anplm", this.documenteUtilizatorLogat);
+    console.log("DUMMY ARRAAAAAAY:", this.documenteUtilizatorLogatx);
+    //this._documenteUtilizatorLogatSource.next(dummyArray);
   }
+
+
 
   getDocumenteUtilizatorLogat() {
     console.log("na-ti getDocumenteDinServiciu");
-    return this.documenteUtilizatorLogat$;
+    return this.documenteUtilizatorLogatx;
+    //return this.documenteUtilizatorLogat$;
   }
 
   setMasiniUtilizatorLogat(contentData) {
     let dummyArray: Array<Masina> = new Array<Masina>();
     contentData.forEach(entry => {
       dummyArray.push(entry);
-      //console.log("Masina:", )
-    })
+      console.log("MASINA:", entry.vin);
+    });
     this.masiniUtilizatorLogat = dummyArray;
   }
 

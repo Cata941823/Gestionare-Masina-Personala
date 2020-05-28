@@ -1,20 +1,28 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {CarLogService, Document, Masina, Utilizator} from "../services/car-log.service";
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {DataService} from "../services/data.service";
-import {CarLogService, Document, Masina, Utilizator} from "../services/car-log.service";
 
 @Component({
-  selector: 'app-platforma',
-  templateUrl: './platforma.component.html',
-  styleUrls: ['./platforma.component.css']
+  selector: 'app-add-masina',
+  templateUrl: './add-masina.component.html',
+  styleUrls: ['./add-masina.component.css']
 })
-export class PlatformaComponent implements OnInit {
+
+export class AddMasinaComponent implements OnInit {
 
   Message: String;
   utilizatorLogat: Utilizator = null;
   masiniUtilizatorLogat: Array<Masina> = new Array<Masina>();
-  documenteUtilizatorLogat: Array<Document> = null;
+  vin_masina: any;
+  marca_masina: any;
+  model_masina: any;
+  nr_masina: any;
+  data_achizitie: any;
+  combustibil: any;
+  pret_masina: any;
+  show_message: any;
 
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
   }
@@ -25,9 +33,9 @@ export class PlatformaComponent implements OnInit {
     if (this.Message == null) {
       this.redirectToLogin();
     }
-    this.importMasiniInAplicatie();
 
-    this.initialiseDocumente();
+    this.importMasiniInAplicatie();
+    this.getMasini();
   }
 
   importMasiniInAplicatie() {
@@ -46,14 +54,19 @@ export class PlatformaComponent implements OnInit {
     this.location.replaceState('/login');
   }
 
-  redirectToAccount() {
+  redirectToAccount(){
     this.router.navigateByUrl("/myaccount", {skipLocationChange: true});
     this.location.replaceState('/myaccount');
   }
 
-  redirectToDocumente() {
+  redirectToDocumente(){
     this.router.navigateByUrl("/documente", {skipLocationChange: true});
     this.location.replaceState('/documente');
+  }
+
+  redirectToGaraj() {
+    this.router.navigateByUrl("/lista-masini", {skipLocationChange: true});
+    this.location.replaceState('/lista-masini');
   }
 
   getMasiniUtilizatorLogat(id) {
@@ -62,42 +75,40 @@ export class PlatformaComponent implements OnInit {
       console.log(data);
     })
   }
-
   getDocumente() {
     this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
+    console.log("Masinute:", this.masiniUtilizatorLogat);
     this.masiniUtilizatorLogat.forEach(entry => {
-      //this.listaNumeMasini.push(entry.marca);
       this.dataService.getToateDocumenteleMasinilorUtilizatoruluiLogat(entry.vin).subscribe(data => {
         this.carLogService.setDocumenteUtilizatorLogat(data);
         console.log(data);
       })
     })
   }
-  initialiseDocumente(){
-    this.documenteUtilizatorLogat = this.carLogService.documenteUtilizatorLogatx;
 
-    // this.carLogService.documenteUtilizatorLogat$.subscribe(
-    //   info => {
-    //     this.documenteUtilizatorLogat = info;
-    //   }
-    // )
+  adaugaMasina() {
+    let car: Masina = new Masina();
+    car.vin = this.vin_masina;
+    car.nrinmatriculare = this.nr_masina;
+    car.tipcombustibil = this.combustibil;
+    car.dataachizitie = this.data_achizitie;
+    car.model = this.model_masina;
+    car.marca = this.marca_masina;
+    car.iduser = this.utilizatorLogat.id;
+    car.pret = this.pret_masina;
+
+    this.dataService.insertCar(car).subscribe(data => {
+      if (data == null) {
+        this.show_message = "Masina adaugata cu succes!";
+      }
+    });
   }
 
-  // getDocumente() {
-  //   console.log("Razvanescu 1:");
-  //   this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
-  //   console.log("Razvanescu 2:", this.masiniUtilizatorLogat);
-  //   this.masiniUtilizatorLogat.forEach(entry => {
-  //     console.log("Razvanescu 3:", entry.vin);
-  //     this.dataService.getToateDocumenteleMasinilorUtilizatoruluiLogat(entry.vin).subscribe(data => {
-  //       this.carLogService.setDocumenteUtilizatorLogat(data);
-  //       console.log(data);
-  //     })
-  //   })
-  // }
+  getMasini() {
 
-  redirectToGaraj() {
-    this.router.navigateByUrl("/lista-masini", {skipLocationChange: true});
-    this.location.replaceState('/lista-masini');
+  }
+
+  redirectBack() {
+
   }
 }

@@ -5,12 +5,11 @@ import {Location} from "@angular/common";
 import {DataService} from "../services/data.service";
 
 @Component({
-  selector: 'app-del-doc',
-  templateUrl: './del-doc.component.html',
-  styleUrls: ['./del-doc.component.css']
+  selector: 'app-del-masina',
+  templateUrl: './del-masina.component.html',
+  styleUrls: ['./del-masina.component.css']
 })
-export class DelDocComponent implements OnInit {
-
+export class DelMasinaComponent implements OnInit {
   // DECLARATII VARIABILE
 
   Message: String;
@@ -81,6 +80,11 @@ export class DelDocComponent implements OnInit {
     this.location.replaceState('/documente');
   }
 
+  redirectToMasina() {
+    this.router.navigateByUrl("/lista-masini", {skipLocationChange: true});
+    this.location.replaceState('/lista-masini');
+  }
+
   getDocumente() {
     this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
     this.masiniUtilizatorLogat.forEach(entry => {
@@ -91,4 +95,5 @@ export class DelDocComponent implements OnInit {
       })
     })
   }
+
 }

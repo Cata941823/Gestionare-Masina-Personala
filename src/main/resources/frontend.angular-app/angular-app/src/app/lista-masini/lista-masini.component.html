@@ -12,29 +12,33 @@
 </div>
 
 <div class="flex-container">
-  <div>Masina 1 aici</div>
-  <button mat-mini-fab color="primary" aria-label="Drop down menu example" class="mini-button">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <div>Masina 2 aici</div>
-  <button mat-mini-fab color="primary" aria-label="Drop down menu example" class="mini-button">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <div>Masina 3 aici</div>
-  <button mat-mini-fab color="primary" aria-label="Drop down menu example" class="mini-button">
-    <mat-icon>menu</mat-icon>
-  </button>
+  <div *ngFor="let item of masiniUtilizatorLogat;" class="card">
+    <img src="https://img.pngio.com/car-running-on-a-road-animation-using-css-png-images-of-a-car-on-a-road-1140_459.png" alt="Avatar" style="width:100%">
+    <h1>{{ item.marca }} {{ item.model }}</h1>
+    <p class="title">{{ item.nrinmatriculare }}</p>
+    <p>{{ item.tipcombustibil }}</p>
+    <p>ID:{{item.id}}</p>
+  </div>
+
 </div>
+
+
 <div class="buttons">
+
   <div class="button">
-    <button mat-fab color="accent" aria-label="Adauga o masina">
+    <button (click)="addCar();" mat-fab color="accent" aria-label="Adauga o masina">
       <mat-icon>plus_one</mat-icon>
     </button>
   </div>
+
   <div class="button">
-    <button mat-fab color="primary" aria-label="Sterge o masina">
+    <button (click)="delCar();redirectToDelCar();" mat-fab color="primary" aria-label="Sterge o masina">
       <mat-icon>delete</mat-icon>
     </button>
+    <mat-form-field style="margin-left: 10px;">
+      <mat-label>ID Masina</mat-label>
+      <input matInput [(ngModel)]="id_car_stergere" type="number" name="id_doc_stergere">
+    </mat-form-field>
   </div>
-</div>
 
+</div>

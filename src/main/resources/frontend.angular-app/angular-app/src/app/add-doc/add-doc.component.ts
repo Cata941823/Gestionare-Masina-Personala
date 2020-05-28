@@ -58,11 +58,12 @@ export class AddDocComponent implements OnInit {
   }
 
   initialiseDocumente() {
-    this.carLogService.documenteUtilizatorLogat$.subscribe(
-      info => {
-        this.documenteUtilizatorLogat = info;
-      }
-    )
+    this.documenteUtilizatorLogat = this.carLogService.documenteUtilizatorLogatx;
+    // this.carLogService.documenteUtilizatorLogat$.subscribe(
+    //   info => {
+    //     this.documenteUtilizatorLogat = info;
+    //   }
+    // )
   }
 
   initialiseUtilizatorLogat() {
@@ -92,20 +93,11 @@ export class AddDocComponent implements OnInit {
     this.location.replaceState('/myaccount');
   }
 
-  redirectBack() {
-    this.router.navigateByUrl("/documente", {skipLocationChange: true});
-    this.location.replaceState('/documente');
-  }
-
   getDocumente() {
     this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
-    this.masiniUtilizatorLogat.forEach(entry => {
-      //this.listaNumeMasini.push(entry.marca);
-      this.dataService.getToateDocumenteleMasinilorUtilizatoruluiLogat(entry.vin).subscribe(data => {
-        this.carLogService.setDocumenteUtilizatorLogat(data);
-        console.log(data);
-      })
-    })
+
+    this.router.navigateByUrl("/documente", {skipLocationChange: true});
+    this.location.replaceState('/documente');
   }
 
   adaugaDocument() {
