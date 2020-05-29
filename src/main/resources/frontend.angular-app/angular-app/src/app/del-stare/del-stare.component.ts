@@ -105,6 +105,5 @@ export class DelStareComponent implements OnInit {
         console.log(data);
       })
     })
-    // this.stareTehnica();
   }
 }
