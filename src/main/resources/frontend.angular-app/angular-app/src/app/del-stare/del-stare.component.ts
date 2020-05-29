@@ -5,11 +5,11 @@ import {Location} from "@angular/common";
 import {DataService} from "../services/data.service";
 
 @Component({
-  selector: 'app-del-doc',
-  templateUrl: './del-doc.component.html',
-  styleUrls: ['./del-doc.component.css']
+  selector: 'app-del-stare',
+  templateUrl: './del-stare.component.html',
+  styleUrls: ['./del-stare.component.css']
 })
-export class DelDocComponent implements OnInit {
+export class DelStareComponent implements OnInit {
 
   // DECLARATII VARIABILE
 
@@ -36,9 +36,7 @@ export class DelDocComponent implements OnInit {
       this.redirectToLogin();
     }
 
-
     this.initialiseDocumente();
-
   }
 
   initialiseDocumente(){
@@ -92,5 +90,10 @@ export class DelDocComponent implements OnInit {
         console.log(data);
       })
     })
+  }
+
+  redirectToPlatforma() {
+    this.router.navigateByUrl("/platforma", {skipLocationChange: true});
+    this.location.replaceState('/platforma');
   }
 }

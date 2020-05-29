@@ -100,6 +100,14 @@ public class Masina {
         this.tipcombustibil = tipcombustibil;
     }
 
+    public int getPret() {
+        return pret;
+    }
+
+    public void setPret(int pret) {
+        this.pret = pret;
+    }
+
     @Override
     public String toString() {
         return "Masina{" +
@@ -111,6 +119,7 @@ public class Masina {
                 ", nrinmatriculare='" + nrinmatriculare + '\'' +
                 ", dataachizitie=" + dataachizitie +
                 ", tipcombustibil='" + tipcombustibil + '\'' +
+                ", pret='" + pret + '\'' +
                 '}';
     }
 }

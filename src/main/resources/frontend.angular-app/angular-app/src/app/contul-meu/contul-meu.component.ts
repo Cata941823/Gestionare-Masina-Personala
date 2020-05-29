@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {DataService} from "../services/data.service";
-import {CarLogService, Utilizator} from "../services/car-log.service";
+import {CarLogService, Masina, Utilizator} from "../services/car-log.service";
 
 @Component({
   selector: 'app-contul-meu',
@@ -24,6 +24,7 @@ export class ContulMeuComponent implements OnInit {
   nr_masini;
   nr_avariatii;
   total_alimentari;
+  masiniUtilizatorLogat: Array<Masina> = new Array<Masina>();
 
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
   }
@@ -95,6 +96,16 @@ export class ContulMeuComponent implements OnInit {
     this.dataService.getTotalAlimentari(this.username).subscribe(data => {
       this.total_alimentari = data;
     });
+  }
+
+  getDocumente() {
+    this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
+    this.masiniUtilizatorLogat.forEach(entry => {
+      this.dataService.getToateDocumenteleMasinilorUtilizatoruluiLogat(entry.vin).subscribe(data => {
+        this.carLogService.setDocumenteUtilizatorLogat(data);
+        console.log(data);
+      })
+    })
   }
 
 }

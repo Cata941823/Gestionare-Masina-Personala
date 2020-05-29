@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CarLogService, Document, Masina, Utilizator} from "../services/car-log.service";
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
@@ -9,13 +9,15 @@ import {DataService} from "../services/data.service";
   templateUrl: './add-doc.component.html',
   styleUrls: ['./add-doc.component.css']
 })
+
 export class AddDocComponent implements OnInit {
 
   // DECLARATII VARIABILE
 
   Message: String;
-  masiniUtilizatorLogat: Array<Masina> = null;
+  masiniUtilizatorLogat: Array<Masina> = new Array<Masina>();
   documenteUtilizatorLogat: Array<Document> = null;
+  //listaNumeMasini: Array<string>;
 
   id;
   username: String;
@@ -31,6 +33,14 @@ export class AddDocComponent implements OnInit {
   document: any;
   pret: any;
 
+
+  // ADD DOCUMENT VARIABILE:
+  vim_masina: any;
+  document_masina: any;
+  data_expirare: any;
+  show_message: any;
+  denumiriDocumente: Array<string> = ["Document", "Alimentare", "ITP", "RCA", "CASCO"];
+
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
   }
 
@@ -42,14 +52,20 @@ export class AddDocComponent implements OnInit {
     }
 
     this.initialiseDocumente();
+    this.getDocumente();
+    this.redirectToAddDoc();
+    console.log("Catalin:", this.masiniUtilizatorLogat);
+    //console.log("Razvan:", this.listaNumeMasini);
+
   }
 
-  initialiseDocumente(){
-    this.carLogService.documenteUtilizatorLogat$.subscribe(
-      info => {
-        this.documenteUtilizatorLogat = info;
-      }
-    )
+  initialiseDocumente() {
+    this.documenteUtilizatorLogat = this.carLogService.documenteUtilizatorLogatx;
+    // this.carLogService.documenteUtilizatorLogat$.subscribe(
+    //   info => {
+    //     this.documenteUtilizatorLogat = info;
+    //   }
+    // )
   }
 
   initialiseUtilizatorLogat() {
@@ -79,8 +95,38 @@ export class AddDocComponent implements OnInit {
     this.location.replaceState('/myaccount');
   }
 
-  redirectBack(){
+  redirectToAddDoc() {
+    this.router.navigateByUrl("/add-doc", {skipLocationChange: true});
+    this.location.replaceState('/add-doc');
+  }
+
+  getDocumente() {
+    this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
+
     this.router.navigateByUrl("/documente", {skipLocationChange: true});
     this.location.replaceState('/documente');
+  }
+
+  redirectToDocumente() {
+    this.router.navigateByUrl("/documente", {skipLocationChange: true});
+    this.location.replaceState('/documente');
+  }
+  adaugaDocument() {
+
+    let doc: Document = new Document();
+    doc.vin = this.vim_masina;
+    doc.tipdocument = this.document_masina;
+    // console.log("Merge:", this.vim_masina);
+    // console.log("Merge:", this.document_masina);
+    // console.log("Merge:", this.data_expirare);
+    // console.log("Merge:", this.pret);
+    doc.dataexpirare = this.data_expirare;
+    doc.pret = this.pret;
+
+    this.dataService.insertDocument(doc).subscribe(data => {
+      if (data == null) {
+        this.show_message = "Document inserat cu succes!";
+      }
+    });
   }
 }

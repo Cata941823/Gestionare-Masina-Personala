@@ -1,24 +1,27 @@
-import {Component, OnInit} from '@angular/core';
-import {CarLogService, Document, Masina, StareTehnica, Utilizator} from "../services/car-log.service";
+import { Component, OnInit } from '@angular/core';
+import {CarLogService, Document, Masina, Utilizator} from "../services/car-log.service";
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {DataService} from "../services/data.service";
 
-
 @Component({
-  selector: 'app-stare-tehnica',
-  templateUrl: './stare-tehnica.component.html',
-  styleUrls: ['./stare-tehnica.component.css']
+  selector: 'app-add-masina',
+  templateUrl: './add-masina.component.html',
+  styleUrls: ['./add-masina.component.css']
 })
 
-export class StareTehnicaComponent implements OnInit {
+export class AddMasinaComponent implements OnInit {
 
   Message: String;
   utilizatorLogat: Utilizator = null;
   masiniUtilizatorLogat: Array<Masina> = new Array<Masina>();
-  documenteUtilizatorLogat: Array<Document> = null;
-  stariTehniceUtilizator: Array<StareTehnica> = new Array<StareTehnica>();
-  id_stare_stergere: any;
+  vin_masina: any;
+  marca_masina: any;
+  model_masina: any;
+  nr_masina: any;
+  data_achizitie: any;
+  combustibil: any;
+  pret_masina: any;
   show_message: any;
 
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
@@ -30,18 +33,9 @@ export class StareTehnicaComponent implements OnInit {
     if (this.Message == null) {
       this.redirectToLogin();
     }
+
     this.importMasiniInAplicatie();
-
-    this.initialiseDocumente();
-
-    //this.getStariTehnice();
-    this.initializeStariTehnice();
-
-  }
-
-  initializeStariTehnice(){
-    this.stariTehniceUtilizator = this.carLogService.getStariTehniceUtilizatori();;
-    console.log("DEBUG:", this.stariTehniceUtilizator);
+    this.getMasini();
   }
 
   importMasiniInAplicatie() {
@@ -55,19 +49,29 @@ export class StareTehnicaComponent implements OnInit {
     }
   }
 
+  redirectToPlatform() {
+    this.router.navigateByUrl("/platforma", {skipLocationChange: true});
+    this.location.replaceState('/platforma');
+  }
+
   redirectToLogin() {
     this.router.navigateByUrl("/login", {skipLocationChange: true});
     this.location.replaceState('/login');
   }
 
-  redirectToAccount() {
+  redirectToAccount(){
     this.router.navigateByUrl("/myaccount", {skipLocationChange: true});
     this.location.replaceState('/myaccount');
   }
 
-  redirectToDocumente() {
+  redirectToDocumente(){
     this.router.navigateByUrl("/documente", {skipLocationChange: true});
     this.location.replaceState('/documente');
+  }
+
+  redirectToGaraj() {
+    this.router.navigateByUrl("/lista-masini", {skipLocationChange: true});
+    this.location.replaceState('/lista-masini');
   }
 
   getMasiniUtilizatorLogat(id) {
@@ -76,9 +80,9 @@ export class StareTehnicaComponent implements OnInit {
       console.log(data);
     })
   }
-
-  getDocumente() {
+  getMasini() {
     this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
+    console.log("Masinute:", this.masiniUtilizatorLogat);
     this.masiniUtilizatorLogat.forEach(entry => {
       this.dataService.getToateDocumenteleMasinilorUtilizatoruluiLogat(entry.vin).subscribe(data => {
         this.carLogService.setDocumenteUtilizatorLogat(data);
@@ -87,34 +91,25 @@ export class StareTehnicaComponent implements OnInit {
     })
   }
 
-  initialiseDocumente() {
-    this.documenteUtilizatorLogat = this.carLogService.documenteUtilizatorLogatx;
-  }
+  adaugaMasina() {
+    let car: Masina = new Masina();
+    car.vin = this.vin_masina;
+    car.nrinmatriculare = this.nr_masina;
+    car.tipcombustibil = this.combustibil;
+    car.dataachizitie = this.data_achizitie;
+    car.model = this.model_masina;
+    car.marca = this.marca_masina;
+    car.iduser = this.utilizatorLogat.id;
+    car.pret = this.pret_masina;
 
-  redirectToGaraj() {
-    this.router.navigateByUrl("/lista-masini", {skipLocationChange: true});
-    this.location.replaceState('/lista-masini');
-  }
-
-  redirectToAddStari() {
-    this.router.navigateByUrl("/add-stare", {skipLocationChange: true});
-    this.location.replaceState('/add-stare');
-  }
-
-  redirectToDelStare() {
-    this.router.navigateByUrl("/del-stare", {skipLocationChange: true});
-    this.location.replaceState('/del-stare');
-  }
-
-  stergereStare() {
-    let id: any;
-    id = this.id_stare_stergere;
-    this.dataService.stergereStare(id).subscribe(data => {
+    this.dataService.insertCar(car).subscribe(data => {
       if (data == null) {
-        this.show_message = "Stare tehnica stearsa!";
-        this.carLogService.setUtitizatorLogat(this.utilizatorLogat);
+        this.show_message = "Masina adaugata cu succes!";
       }
     });
+  }
+
+  redirectBack() {
 
   }
 }

@@ -11,17 +11,17 @@ public class StareTehnica {
 
     private int idmasina;
     private int kilometraj;
-    private short avariatii;
-    private String mentiuniavarii;
+    private int avariatii;
+    private String mentiuniavariatii;
 
     public StareTehnica() {
     }
 
-    public StareTehnica(int id_masina,int kilometraj, short avariatii, String MentiuniAvarii) {
-        this.idmasina = id_masina;
+    public StareTehnica(int idmasina,int kilometraj, int avariatii, String mentiuniavariatii) {
+        this.idmasina = idmasina;
         this.kilometraj = kilometraj;
         this.avariatii = avariatii;
-        this.mentiuniavarii = MentiuniAvarii;
+        this.mentiuniavariatii = mentiuniavariatii;
     }
 
     public int getId() {
@@ -36,8 +36,8 @@ public class StareTehnica {
         return idmasina;
     }
 
-    public void setId_masina(int id_masina) {
-        this.idmasina = id_masina;
+    public void setId_masina(int idmasina) {
+        this.idmasina = idmasina;
     }
 
     public int getKilometraj() {
@@ -48,7 +48,7 @@ public class StareTehnica {
         this.kilometraj = kilometraj;
     }
 
-    public short getAvariatii() {
+    public int getAvariatii() {
         return avariatii;
     }
 
@@ -57,11 +57,11 @@ public class StareTehnica {
     }
 
     public String getMentiuniAvarii() {
-        return mentiuniavarii;
+        return mentiuniavariatii;
     }
 
     public void setMentiuniAvarii(String mentiuniAvarii) {
-        mentiuniavarii = mentiuniAvarii;
+        mentiuniavariatii = mentiuniAvarii;
     }
 
     @Override
@@ -71,7 +71,7 @@ public class StareTehnica {
                 ", id_masina=" + idmasina +
                 ", kilometraj=" + kilometraj +
                 ", avarii=" + avariatii +
-                ", MentiuniAvarii='" + mentiuniavarii + '\'' +
+                ", MentiuniAvarii='" + mentiuniavariatii + '\'' +
                 '}';
     }
 }

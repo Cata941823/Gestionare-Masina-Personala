@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CarLogService, Utilizator} from "../services/car-log.service";
+import {CarLogService, Masina, Utilizator} from "../services/car-log.service";
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {DataService} from "../services/data.service";
@@ -14,6 +14,8 @@ export class ListaMasiniComponent implements OnInit {
 
   Message: String;
   utilizatorLogat: Utilizator = null;
+  masiniUtilizatorLogat: Array<Masina> = new Array<Masina>();
+  id_car_stergere: any;
 
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
   }
@@ -24,6 +26,8 @@ export class ListaMasiniComponent implements OnInit {
     if (this.Message == null) {
       this.redirectToLogin();
     }
+
+    this.getDocumente();
   }
 
   initialiseUtilizatorLogat() {
@@ -53,4 +57,32 @@ export class ListaMasiniComponent implements OnInit {
     this.location.replaceState('/lista-masini');
   }
 
+
+  getDocumente() {
+    this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
+    console.log("Masinute:", this.masiniUtilizatorLogat);
+    this.masiniUtilizatorLogat.forEach(entry => {
+      this.dataService.getToateDocumenteleMasinilorUtilizatoruluiLogat(entry.vin).subscribe(data => {
+        this.carLogService.setDocumenteUtilizatorLogat(data);
+        console.log(data);
+      })
+    })
+  }
+
+  addCar() {
+    this.router.navigateByUrl("/add-car", {skipLocationChange: true});
+    this.location.replaceState('/add-car');
+  }
+
+  delCar() {
+    let id: any;
+    id = this.id_car_stergere;
+    this.dataService.deleteMasina(id).subscribe(data => {
+      if (data == null) {
+        this.carLogService.setUtitizatorLogat(this.utilizatorLogat);
+        this.router.navigateByUrl("/del-car", {skipLocationChange: true});
+        this.location.replaceState('/del-car');
+      }
+    });
+  }
 }

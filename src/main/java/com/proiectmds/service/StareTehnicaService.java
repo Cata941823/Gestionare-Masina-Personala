@@ -22,6 +22,8 @@ public class StareTehnicaService  {
         return stareTehnicaReposistory.findById(id);
     }
 
+    public List<StareTehnica> gasesteDupaIdMasina(int id){ return stareTehnicaReposistory.findByIdmasina(id);}
+
     public List<StareTehnica> getAllStareTehnica(){
         List<StareTehnica> stareTehnica = new ArrayList<StareTehnica>();
         stareTehnicaReposistory.findAll().forEach(s -> stareTehnica.add(s));

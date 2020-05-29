@@ -1,21 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import {CarLogService, Document, Masina, Utilizator} from "../services/car-log.service";
+import {CarLogService, Document, Masina, StareTehnica, Utilizator} from "../services/car-log.service";
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {DataService} from "../services/data.service";
 
 @Component({
-  selector: 'app-del-doc',
-  templateUrl: './del-doc.component.html',
-  styleUrls: ['./del-doc.component.css']
+  selector: 'app-add-stare',
+  templateUrl: './add-stare.component.html',
+  styleUrls: ['./add-stare.component.css']
 })
-export class DelDocComponent implements OnInit {
+export class AddStareComponent implements OnInit {
+
+  avariatiiVariante: Array<String> = ["Da", "Nu"];
+  avariatii: any;
+  kilometraj: any;
+  id_masina: any;
+  mentiuni: any;
+  show_message: any;
+
 
   // DECLARATII VARIABILE
 
   Message: String;
-  masiniUtilizatorLogat: Array<Masina> = null;
+  masiniUtilizatorLogat: Array<Masina> = new Array<Masina>();
   documenteUtilizatorLogat: Array<Document> = null;
+  //listaNumeMasini: Array<string>;
 
   id;
   username: String;
@@ -25,6 +34,18 @@ export class DelDocComponent implements OnInit {
   varsta: String;
   utilizatorLogat: Utilizator = null;
   displayedColumns: ["iddocument", "vin", "tipdocument", "dataexpirare", "pret"];
+  masina: any;
+  brandSiMarcaMasiniUtilizatorLogat: ["iddocument", "vin", "tipdocument", "dataexpirare", "pret"];
+  tipDocumente: any;
+  document: any;
+  pret: any;
+
+
+  // ADD DOCUMENT VARIABILE:
+  vim_masina: any;
+  document_masina: any;
+  data_expirare: any;
+  denumiriDocumente: Array<string> = ["Document", "Alimentare", "ITP", "RCA", "CASCO"];
 
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
   }
@@ -36,14 +57,15 @@ export class DelDocComponent implements OnInit {
       this.redirectToLogin();
     }
 
-
     this.initialiseDocumente();
+    this.getDocumente();
+    //console.log("Catalin:", this.masiniUtilizatorLogat);
+    //console.log("Razvan:", this.listaNumeMasini);
 
   }
 
-  initialiseDocumente(){
+  initialiseDocumente() {
     this.documenteUtilizatorLogat = this.carLogService.documenteUtilizatorLogatx;
-
     // this.carLogService.documenteUtilizatorLogat$.subscribe(
     //   info => {
     //     this.documenteUtilizatorLogat = info;
@@ -78,19 +100,37 @@ export class DelDocComponent implements OnInit {
     this.location.replaceState('/myaccount');
   }
 
-  redirectToDocumente() {
-    this.router.navigateByUrl("/documente", {skipLocationChange: true});
-    this.location.replaceState('/documente');
-  }
-
   getDocumente() {
     this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
-    this.masiniUtilizatorLogat.forEach(entry => {
-      //this.listaNumeMasini.push(entry.marca);
-      this.dataService.getToateDocumenteleMasinilorUtilizatoruluiLogat(entry.vin).subscribe(data => {
-        this.carLogService.setDocumenteUtilizatorLogat(data);
-        console.log(data);
-      })
-    })
   }
+
+  adaugaStare() {
+    let st: StareTehnica = new StareTehnica();
+    st.id_masina = this.id_masina;
+    if(this.mentiuni != null) {
+      st.mentiuniavariatii = this.mentiuni;
+    }
+    else{
+      st.mentiuniavariatii = "";
+    }
+    if(this.avariatii == "Da") {
+      st.avariatii = 1;
+    }
+    else{
+      st.avariatii = 0;
+    }
+    st.kilometraj = this.kilometraj;
+
+    this.dataService.insertStare(st).subscribe(data => {
+      if (data == null) {
+        this.show_message = "Stare tehnica inserata cu succes!";
+      }
+    });
+  }
+
+  redirectToPlatforma() {
+    this.router.navigateByUrl("/myaccount", {skipLocationChange: true});
+    this.location.replaceState('/myaccount');
+  }
+
 }

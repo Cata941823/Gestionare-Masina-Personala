@@ -1,0 +1,54 @@
+<div class="meniu">
+  <div (click)="redirectToPlatform();" style="cursor: pointer;" class="logo">
+
+  </div>
+  <div class="submeniu">
+    <button mat-button>Garaj</button>
+    <button mat-button>Stare tehnica</button>
+    <button mat-button>Documente</button>
+    <button mat-button (click)="redirectToAccount();">{{username}}</button>
+
+  </div>
+</div>
+
+
+<div class="addoc-container">
+
+  <form class="adddoc-form">
+
+    <!--    <input [(ngModel)]="firstname" name="something">-->
+
+    <mat-form-field class="adddoc-full-width">
+      <mat-label>Selecteaza masina</mat-label>
+      <mat-select [(ngModel)]="id_masina" name="id_masina">
+        <mat-option *ngFor="let item of masiniUtilizatorLogat" value="{{item.id}}" >{{item.id}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field class="adddoc-full-width">
+      <mat-label>Kilometraj</mat-label>
+      <input matInput [(ngModel)]="kilometraj" type="number" name="kilometraj">
+    </mat-form-field>
+
+
+    <mat-form-field class="adddoc-full-width">
+      <mat-label>Avariatii</mat-label>
+      <mat-select [(ngModel)]="avariatii" name="Document">
+        <mat-option *ngFor="let item of avariatiiVariante" value="{{item}}" >{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field class="adddoc-full-width">
+      <mat-label>Mentiuni avariatii</mat-label>
+      <input matInput [(ngModel)]="mentiuni" type="text" name="mentiuni">
+    </mat-form-field>
+
+
+    <button class="adddoc-button" mat-raised-button color="primary" (click)="adaugaStare();">Adauga document</button>
+    <button  style="margin-left: 5%;" (click)="redirectToPlatforma();"  mat-raised-button color="warn"> Back</button>
+
+  </form>
+  <p style="margin: 0px auto;">{{show_message}}</p>
+</div>

@@ -27,6 +27,8 @@ export class DocumenteComponent implements OnInit {
   varsta: String;
   utilizatorLogat: Utilizator = null;
   displayedColumns: ["iddocument", "vin", "tipdocument", "dataexpirare", "pret"];
+  id_doc_stergere: any;
+  show_message: string;
 
   constructor(private router: Router, private location: Location, private dataService: DataService, private carLogService: CarLogService) {
   }
@@ -38,15 +40,36 @@ export class DocumenteComponent implements OnInit {
       this.redirectToLogin();
     }
 
+    this.carLogService.getDocumenteUtilizatorLogat();
+
     this.initialiseDocumente();
+
+    this.getDocumente();
   }
 
   initialiseDocumente(){
-    this.carLogService.documenteUtilizatorLogat$.subscribe(
-      info => {
-        this.documenteUtilizatorLogat = info;
-      }
-    )
+    this.documenteUtilizatorLogat = this.carLogService.documenteUtilizatorLogatx;
+
+    // this.carLogService.documenteUtilizatorLogat$.subscribe(
+    //   info => {
+    //     this.documenteUtilizatorLogat = info;
+    //   }
+    // )
+  }
+
+
+
+  getDocumente() {
+    this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
+    console.log("MASINI UTLIZATOR LOGAT", this.masiniUtilizatorLogat);
+    this.masiniUtilizatorLogat.forEach(entry => {
+      //this.listaNumeMasini.push(entry.marca);
+      this.dataService.getToateDocumenteleMasinilorUtilizatoruluiLogat(entry.vin).subscribe(data => {
+        this.carLogService.setDocumenteUtilizatorLogat(data);
+        //this.documenteUtilizatorLogat = this.carLogService.documenteUtilizatorLogatx;
+        console.log("LALALALALLA documenteeelelle", data);
+      })
+    })
   }
 
   initialiseUtilizatorLogat() {
@@ -81,9 +104,24 @@ export class DocumenteComponent implements OnInit {
     this.location.replaceState('/add-doc');
   }
 
+
   redirectToDelDoc() {
     this.router.navigateByUrl("/del-doc", {skipLocationChange: true});
     this.location.replaceState('/del-doc');
   }
+
+
+
+  stergereDocument() {
+    let id: any;
+    id = this.id_doc_stergere;
+    this.dataService.stergereDocument(id).subscribe(data => {
+      if (data == null) {
+        this.show_message = "Document sters!";
+        this.carLogService.setUtitizatorLogat(this.utilizatorLogat);
+      }
+    });
+  }
+
 }
 
