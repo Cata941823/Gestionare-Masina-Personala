@@ -112,4 +112,14 @@ export class AddMasinaComponent implements OnInit {
   redirectBack() {
 
   }
+
+  getDocumente() {
+    this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
+    this.masiniUtilizatorLogat.forEach(entry => {
+      this.dataService.getToateDocumenteleMasinilorUtilizatoruluiLogat(entry.vin).subscribe(data => {
+        this.carLogService.setDocumenteUtilizatorLogat(data);
+        console.log(data);
+      })
+    })
+  }
 }

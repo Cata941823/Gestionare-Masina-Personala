@@ -43,14 +43,8 @@
       <input matInput [(ngModel)]="pret" type="number" name="pret">
     </mat-form-field>
 
-
-<<<<<<< HEAD
-    <button class="adddoc-button" mat-raised-button color="primary" (click)="adaugaDocument();">Adauga document</button>
-    <button  style="margin-left: 5%;" (click)="getDocumente();"  mat-raised-button color="warn"> Back</button>
-=======
     <button class="adddoc-button" mat-raised-button color="primary" (click)="adaugaDocument();redirectToPlatform();">Adauga document</button>
     <button  style="margin-left: 5%;" (click)="getDocumente();redirectToDocumente();"  mat-raised-button color="warn"> Back</button>
->>>>>>> 1c0b7af9024ec17016d5eba79775fe17f016bc6c
 
   </form>
   <p style="margin: 0px auto;">{{show_message}}</p>
