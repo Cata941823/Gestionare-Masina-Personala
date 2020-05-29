@@ -49,6 +49,11 @@ export class AddMasinaComponent implements OnInit {
     }
   }
 
+  redirectToPlatform() {
+    this.router.navigateByUrl("/platforma", {skipLocationChange: true});
+    this.location.replaceState('/platforma');
+  }
+
   redirectToLogin() {
     this.router.navigateByUrl("/login", {skipLocationChange: true});
     this.location.replaceState('/login');
@@ -75,7 +80,7 @@ export class AddMasinaComponent implements OnInit {
       console.log(data);
     })
   }
-  getDocumente() {
+  getMasini() {
     this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
     console.log("Masinute:", this.masiniUtilizatorLogat);
     this.masiniUtilizatorLogat.forEach(entry => {
@@ -102,10 +107,6 @@ export class AddMasinaComponent implements OnInit {
         this.show_message = "Masina adaugata cu succes!";
       }
     });
-  }
-
-  getMasini() {
-
   }
 
   redirectBack() {

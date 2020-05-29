@@ -36,7 +36,9 @@ export class DelDocComponent implements OnInit {
       this.redirectToLogin();
     }
 
+
     this.initialiseDocumente();
+
   }
 
   initialiseDocumente(){

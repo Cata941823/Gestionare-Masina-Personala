@@ -40,7 +40,11 @@ export class DocumenteComponent implements OnInit {
       this.redirectToLogin();
     }
 
+    this.carLogService.getDocumenteUtilizatorLogat();
+
     this.initialiseDocumente();
+
+    this.getDocumente();
   }
 
   initialiseDocumente(){
@@ -51,6 +55,21 @@ export class DocumenteComponent implements OnInit {
     //     this.documenteUtilizatorLogat = info;
     //   }
     // )
+  }
+
+
+
+  getDocumente() {
+    this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
+    console.log("MASINI UTLIZATOR LOGAT", this.masiniUtilizatorLogat);
+    this.masiniUtilizatorLogat.forEach(entry => {
+      //this.listaNumeMasini.push(entry.marca);
+      this.dataService.getToateDocumenteleMasinilorUtilizatoruluiLogat(entry.vin).subscribe(data => {
+        this.carLogService.setDocumenteUtilizatorLogat(data);
+        //this.documenteUtilizatorLogat = this.carLogService.documenteUtilizatorLogatx;
+        console.log("LALALALALLA documenteeelelle", data);
+      })
+    })
   }
 
   initialiseUtilizatorLogat() {
@@ -84,6 +103,7 @@ export class DocumenteComponent implements OnInit {
     this.router.navigateByUrl("/add-doc", {skipLocationChange: true});
     this.location.replaceState('/add-doc');
   }
+
 
   redirectToDelDoc() {
     this.router.navigateByUrl("/del-doc", {skipLocationChange: true});
