@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpEvent, HttpHeaders, HttpRequest, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Document, Masina} from "./car-log.service";
+import {Document, Masina, StareTehnica} from "./car-log.service";
 
 
 
@@ -70,7 +70,6 @@ export class DataService {
     return this.httpClient.post<any>(url, payload);
   }
 
-
   getToateDocumentele(username): Observable<HttpResponse<any>> {
     let url = this.baseUrl.concat("/search/toatedocumentele");
     let payload = {username: username};
@@ -134,4 +133,38 @@ export class DataService {
     return this.httpClient.delete(url, options);}
 
 
+  getStarileTehnice(id): Observable<HttpRequest<any>> {
+    let url = this.baseUrl.concat("/search/stari-tehnice-masina");
+    let payload = {id: id};
+    return this.httpClient.post<any>(url, payload.id);
+  }
+
+  getToateStarileMasinilorUtilizatoruluiLogat(idMasina): Observable<HttpRequest<any>>{
+    let url = this.baseUrl.concat("/search/stari-tehnice-masina");
+    let payload = {idmasina: idMasina};
+    return this.httpClient.post<any>(url, payload);
+  }
+
+  insertStare(st: StareTehnica): Observable<HttpRequest<any>> {
+    let url = this.baseUrl.concat("/search/StareTehnicaCr");
+    console.log("CUTARE");
+    console.log(st);
+    let payload = {data: st};
+    console.log("HAIDA:", payload.data);
+    return this.httpClient.post<any>(url, payload.data);
+  }
+
+  stergereStare(id: number){
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: {
+        id: id
+      },
+    };
+
+    let url = this.baseUrl.concat("/search/StareTehnicaDelete");
+    return this.httpClient.delete(url, options);
+  }
 }

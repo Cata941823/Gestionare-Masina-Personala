@@ -23,6 +23,14 @@ export class Masina {
   pret;
 }
 
+export class StareTehnica {
+  id;
+  id_masina;
+  kilometraj;
+  avariatii;
+  mentiuniavariatii;
+}
+
 export class Document {
   iddocument;
   vin;
@@ -39,6 +47,8 @@ export class CarLogService {
   utilizator: Utilizator;
   username: String;
   masiniUtilizatorLogat: Array<Masina>;
+  stariTehniceUtilizatorLogatx: Array<StareTehnica> = new Array<StareTehnica>();
+  stariTehniceUtilizatorLogaty: Array<StareTehnica> = new Array<StareTehnica>();
   documenteUtilizatorLogatx: Array<Document> = new Array<Document>();
   documenteUtilizatorLogaty: Array<Document> = new Array<Document>();
 
@@ -55,7 +65,7 @@ export class CarLogService {
       console.log("Document:", entry);
     });
 
-    for(let i = 0; i<dummyArray.length; i++){
+    for (let i = 0; i < dummyArray.length; i++) {
       this.documenteUtilizatorLogaty.push(dummyArray[i]);
     }
     this.documenteUtilizatorLogatx = this.documenteUtilizatorLogaty.filter((thing, i, arr) => arr.findIndex(t => t.iddocument === thing.iddocument) === i
@@ -67,8 +77,6 @@ export class CarLogService {
     console.log("DUMMY ARRAAAAAAY:", this.documenteUtilizatorLogatx);
     //this._documenteUtilizatorLogatSource.next(dummyArray);
   }
-
-
 
   getDocumenteUtilizatorLogat() {
     console.log("na-ti getDocumenteDinServiciu");
@@ -97,4 +105,20 @@ export class CarLogService {
     return this.utilizator;
   }
 
+  setStariTehniceUtilizatorLogat(contentData) {
+    let dummyArray: Array<StareTehnica> = new Array<StareTehnica>();
+    contentData.forEach(entry => {
+      dummyArray.push(entry);
+      console.log("Stare tehnica:", entry);
+    });
+    for (let i = 0; i < dummyArray.length; i++) {
+      this.stariTehniceUtilizatorLogaty.push(dummyArray[i]);
+    }
+    this.stariTehniceUtilizatorLogatx = this.stariTehniceUtilizatorLogaty.filter((thing, i, arr) => arr.findIndex(t => t.id === thing.id) === i);
+    console.log("DUMMY ARRAAAAAAY:", this.stariTehniceUtilizatorLogatx);
+  }
+
+  getStariTehniceUtilizatori() {
+    return this.stariTehniceUtilizatorLogatx;
+  }
 }

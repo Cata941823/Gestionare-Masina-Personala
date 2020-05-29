@@ -30,6 +30,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import { StareTehnicaComponent } from './stare-tehnica/stare-tehnica.component';
 import { AddMasinaComponent } from './add-masina/add-masina.component';
 import { DelMasinaComponent } from './del-masina/del-masina.component';
+import { AddStareComponent } from './add-stare/add-stare.component';
+import { DelStareComponent } from './del-stare/del-stare.component';
 
 const appRoutes: Routes = [
   {path: 'signup', component: SignupComponent},
@@ -42,6 +44,9 @@ const appRoutes: Routes = [
   {path: 'del-doc', component: DelDocComponent},
   {path: 'add-car', component: AddMasinaComponent},
   {path: 'del-car', component: DelMasinaComponent},
+  {path: 'stare-tehnica', component: StareTehnicaComponent},
+  {path: 'add-stare', component: AddStareComponent},
+  {path: 'del-stare', component: DelStareComponent},
   {path: '', redirectTo: '/signup', pathMatch: 'full'}
 ];
 
@@ -59,7 +64,9 @@ const appRoutes: Routes = [
     DelDocComponent,
     StareTehnicaComponent,
     AddMasinaComponent,
-    DelMasinaComponent
+    DelMasinaComponent,
+    AddStareComponent,
+    DelStareComponent
   ],
   imports: [
     BrowserModule,

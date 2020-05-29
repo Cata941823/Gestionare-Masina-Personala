@@ -25,11 +25,6 @@ public class StareTehnicaController extends SpringBootServletInitializer {
         return stareTehnicaService.getAllStareTehnica();
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @RequestMapping(value = "/toate-masinile-avariate-dupa-id", method = RequestMethod.GET)
-    public List<StareTehnica> VeziMasinaAvariataDupaID(@RequestBody Map<String, Integer> payload){
-        return stareTehnicaService.gasestedupaid(payload.get("id"));
-    }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/masini-cu-km", method = RequestMethod.GET)
@@ -40,6 +35,20 @@ public class StareTehnicaController extends SpringBootServletInitializer {
 
     // POST METHODS
     @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/stari-tehnice", method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public List<StareTehnica> VeziMasinaAvariataDupaID(@RequestBody Map<String, Integer> payload){
+        return stareTehnicaService.gasestedupaid(payload.get("id"));
+    }
+
+    // POST METHODS
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/stari-tehnice-masina", method = RequestMethod.POST)
+    public List<StareTehnica> getAllStariByIdMasina(@RequestBody Map<String, Integer> payload){
+        return stareTehnicaService.gasesteDupaIdMasina(payload.get("idmasina"));
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/StareTehnicaCr", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
     public void insert(@RequestBody StareTehnica stareTehnica){
@@ -48,7 +57,8 @@ public class StareTehnicaController extends SpringBootServletInitializer {
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @RequestMapping(value = "/StareTehnicaDelete", method = RequestMethod.POST)
+    @RequestMapping(value = "/StareTehnicaDelete", method = RequestMethod.DELETE)
+    @ResponseStatus(value = HttpStatus.OK)
     public void delete(@RequestBody Map<String, Integer> payload){
         stareTehnicaService.deleteStareTehnica(payload.get("id"));
     }

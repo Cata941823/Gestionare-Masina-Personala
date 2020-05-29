@@ -1,0 +1,18 @@
+<div class="meniu">
+  <div (click)="redirectToPlatform();" style="cursor: pointer;" class="logo">
+
+  </div>
+  <div class="submeniu">
+    <button mat-button>Garaj</button>
+    <button mat-button>Stare tehnica</button>
+    <button mat-button>Documente</button>
+    <button mat-button (click)="redirectToAccount();">{{username}}</button>
+
+  </div>
+</div>
+
+<div class="example-container">
+  <h2 style="color:red; text-align: center;margin-top: 40px;">Starea tehnica a fost stearsa cu succes!</h2>
+  <button style="width: 100%;" (click)="redirectToPlatforma();" mat-raised-button color="warn">Inapoi</button>
+
+</div>

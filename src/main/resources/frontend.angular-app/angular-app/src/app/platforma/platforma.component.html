@@ -4,7 +4,7 @@
   </div>
   <div class="submeniu">
     <button mat-button (click)="redirectToGaraj();">Garaj</button>
-    <button mat-button>Stare tehnica</button>
+    <button mat-button (click)="getStariTehnice();">Stare tehnica</button>
     <button mat-button (click)="getDocumente();redirectToDocumente();">Documente</button>
     <button mat-button (click)="redirectToAccount();">{{Message}}</button>
 
@@ -17,3 +17,4 @@
 <div class="footer">
   <h1 style="text-align: center;color: white;">Project made by ARCA team.</h1>
 </div>
+

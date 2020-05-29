@@ -1,1 +1,51 @@
-<p>stare-tehnica works!</p>
+<div class="meniu">
+  <div class="logo">
+
+  </div>
+  <div class="submeniu">
+    <button mat-button (click)="redirectToGaraj();">Garaj</button>
+    <button mat-button>Stare tehnica</button>
+    <button mat-button (click)="getDocumente();redirectToDocumente();">Documente</button>
+    <button mat-button (click)="redirectToAccount();">{{Message}}</button>
+
+  </div>
+</div>
+
+<div class="Table-search">
+
+  <table id="docs">
+    <tr>
+      <th>ID</th>
+      <th>Kilometraj</th>
+      <th>Avariatii</th>
+      <th>Mentiuni</th>
+    </tr>
+    <ng-container *ngFor="let stare of stariTehniceUtilizator">
+      <tr>
+        <td>{{stare.id}}</td>
+        <td>{{stare.kilometraj}} KM</td>
+        <td>{{stare.avariatii}}</td>
+        <td>{{stare.mentiuniavariatii}}</td>
+      </tr>
+    </ng-container>
+  </table>
+
+  <button style="width: 100%;" (click)="redirectToAddStari();" mat-raised-button color="primary"> + Adauga o stare tehnica</button>
+
+  <br>
+  <br>
+  <br>
+  <br>  <mat-form-field>
+  <mat-label>ID Stare</mat-label>
+  <input matInput [(ngModel)]="id_stare_stergere" type="number" name="id_doc_stergere">
+</mat-form-field>
+  <button style="width: 100%;" (click)="stergereStare();redirectToDelStare();" mat-raised-button color="warn"> - Sterge o stare tehnica</button>
+  <p style="text-align: center; color: red; font-size: 20px;">{{show_message}}</p>
+
+</div>
+
+
+<!--idmasina-->
+<!--kilometraj-->
+<!--avariatii-->
+<!--mentiuniavariatii-->

@@ -11,4 +11,5 @@ public interface StareTehnicaRepository extends JpaRepository<StareTehnica, Inte
     List<StareTehnica> findById(int Id);
     //List<StareTehnica> findByAvariatii(boolean avariat);
     List<StareTehnica> findByKilometraj(int kilometraj);
+    List<StareTehnica> findByIdmasina(int Id);
 }
