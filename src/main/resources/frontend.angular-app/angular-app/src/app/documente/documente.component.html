@@ -14,25 +14,6 @@
 
 <div class="Table-search">
 
-  <mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
-  </mat-form-field>
-
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <!-- Id documentColumn -->
-    <ng-container matColumnDef="iddocument">
-      <th mat-header-cell *matHeaderCellDef> ID Document </th>
-      <td mat-cell *matCellDef="let element"> {{element.iddocument}} </td>
-    </ng-container>
-
-    <!-- VIN Column -->
-    <ng-container matColumnDef="vin">
-      <th mat-header-cell *matHeaderCellDef> VIN </th>
-      <td mat-cell *matCellDef="let element"> {{element.vin}} </td>
-    </ng-container>
-
   <table id="docs">
     <tr>
       <th>ID Document</th>
@@ -47,44 +28,13 @@
         <td>{{doc.vin}}</td>
         <td>{{doc.tipdocument}}</td>
         <td>{{doc.dataexpirare}}</td>
-        <td>{{doc.pret}}</td>
+        <td>{{doc.pret}} RON</td>
       </tr>
     </ng-container>
   </table>
-  <!-- <mat-form-field>
-     <mat-label>Filtru</mat-label>
-     <input matInput (keyup)="applyFilter($event)" placeholder="Ex: alimentare">
-   </mat-form-field>
- -->
 
-    <!-- Tip document Column -->
-    <ng-container matColumnDef="tipdocumente">
-      <th mat-header-cell *matHeaderCellDef> Tip document </th>
-      <td mat-cell *matCellDef="let element"> {{element.tipdocumente}} </td>
-    </ng-container>
+  <button style="margin-top:5%;" (click)="redirectToAddDoc();" mat-raised-button color="primary"> + Adauga un document</button>
+  <button style="margin-left: 5%;margin-top:5%;" (click)="redirectToDelDoc();" mat-raised-button color="warn"> - Sterge un document</button>
 
-    <!-- Data expirare Column -->
-    <ng-container matColumnDef="dataexpirare">
-      <th mat-header-cell *matHeaderCellDef> Data expirare </th>
-      <td mat-cell *matCellDef="let element"> {{element.dataexpirare}} </td>
-    </ng-container>
-
-    <!-- Pret Column -->
-    <ng-container matColumnDef="pret">
-      <th mat-header-cell *matHeaderCellDef> Pret </th>
-      <td mat-cell *matCellDef="let element"> {{element.pret}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
-  <!--    <table mat-table [dataSource]="dataSource" matSort>-->
-  <!--        <tr *ngFor="#document of dataSource">-->
-  <!--          <td><h1>{{document[0]}}</h1></td>-->
-  <!--        </tr>-->
-  <!--    </table>-->
 
 </div>
-
-<p>ALO: {{DOCUMENT_DATA_TEMP}}</p>

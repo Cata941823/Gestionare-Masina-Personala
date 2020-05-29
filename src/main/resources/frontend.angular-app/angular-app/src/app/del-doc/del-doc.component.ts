@@ -1,17 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {CarLogService, Document, Masina, Utilizator} from "../services/car-log.service";
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {DataService} from "../services/data.service";
-import {CarLogService, Document, Masina, Utilizator} from "../services/car-log.service";
-
 
 @Component({
-  selector: 'app-documente',
-  templateUrl: './documente.component.html',
-  styleUrls: ['./documente.component.css']
+  selector: 'app-del-doc',
+  templateUrl: './del-doc.component.html',
+  styleUrls: ['./del-doc.component.css']
 })
-
-export class DocumenteComponent implements OnInit {
+export class DelDocComponent implements OnInit {
 
   // DECLARATII VARIABILE
 
@@ -75,15 +73,4 @@ export class DocumenteComponent implements OnInit {
     this.router.navigateByUrl("/myaccount", {skipLocationChange: true});
     this.location.replaceState('/myaccount');
   }
-
-  redirectToAddDoc() {
-    this.router.navigateByUrl("/add-doc", {skipLocationChange: true});
-    this.location.replaceState('/add-doc');
-  }
-
-  redirectToDelDoc() {
-    this.router.navigateByUrl("/del-doc", {skipLocationChange: true});
-    this.location.replaceState('/del-doc');
-  }
 }
-

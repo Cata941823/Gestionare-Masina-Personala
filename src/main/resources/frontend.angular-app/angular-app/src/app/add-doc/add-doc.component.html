@@ -1,0 +1,52 @@
+<div class="meniu">
+  <div (click)="redirectToPlatform();" style="cursor: pointer;" class="logo">
+
+  </div>
+  <div class="submeniu">
+    <button mat-button>Garaj</button>
+    <button mat-button>Stare tehnica</button>
+    <button mat-button>Documente</button>
+    <button mat-button (click)="redirectToAccount();">{{username}}</button>
+
+  </div>
+</div>
+
+
+<div class="addoc-container">
+
+  <form class="adddoc-form">
+
+    <mat-form-field class="adddoc-full-width">
+      <mat-label>Selecteaza masina</mat-label>
+      <mat-select>
+        <mat-option [(ngModel)]="masina">Volvo XC60</mat-option>
+        <mat-option [(ngModel)]="masina">BMW X5</mat-option>
+        <mat-option [(ngModel)]="masina">LOGAN 2019</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="adddoc-full-width">
+      <mat-label>Tip document</mat-label>
+      <mat-select>
+        <mat-option [(ngModel)]="document" value="{{tipDocumente}}">Document</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+<!--    <mat-form-field class="adddoc-full-width">-->
+<!--      <mat-label>Data expirare</mat-label>-->
+<!--      <input matInput [matDatepicker]="picker">-->
+<!--      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--      <mat-datepicker #picker></mat-datepicker>-->
+<!--    </mat-form-field>-->
+
+    <mat-form-field class="adddoc-full-width">
+      <mat-label>Pret</mat-label>
+      <input matInput [(ngModel)]="pret" type="number" name="pret">
+    </mat-form-field>
+
+
+    <button class="adddoc-button" mat-raised-button color="primary">Adauga document</button>
+    <button  style="margin-left: 5%;" (click)="redirectBack();"  mat-raised-button color="warn"> Back</button>
+
+  </form>
+</div>
