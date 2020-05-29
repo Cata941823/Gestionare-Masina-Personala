@@ -96,4 +96,15 @@ export class DelStareComponent implements OnInit {
     this.router.navigateByUrl("/platforma", {skipLocationChange: true});
     this.location.replaceState('/platforma');
   }
+
+  getStariTehnice() {
+    this.masiniUtilizatorLogat = this.carLogService.getMasiniUtilizatorLogat();
+    this.masiniUtilizatorLogat.forEach(entry => {
+      this.dataService.getToateStarileMasinilorUtilizatoruluiLogat(entry.id).subscribe(data => {
+        this.carLogService.setStariTehniceUtilizatorLogat(data);
+        console.log(data);
+      })
+    })
+    // this.stareTehnica();
+  }
 }

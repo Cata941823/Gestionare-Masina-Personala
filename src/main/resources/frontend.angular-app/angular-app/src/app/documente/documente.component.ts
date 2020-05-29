@@ -81,7 +81,10 @@ export class DocumenteComponent implements OnInit {
       this.prenume = this.utilizatorLogat.prenume;
       this.varsta = this.utilizatorLogat.varsta;
       this.email = this.utilizatorLogat.email;
+      this.Message = this.utilizatorLogat.username;
     }
+
+
   }
 
   redirectToPlatform() {
@@ -121,6 +124,21 @@ export class DocumenteComponent implements OnInit {
         this.carLogService.setUtitizatorLogat(this.utilizatorLogat);
       }
     });
+  }
+
+  redirectToGaraj() {
+    this.router.navigateByUrl("/lista-masini", {skipLocationChange: true});
+    this.location.replaceState('/lista-masini');
+  }
+
+  redirectToStareTehnica() {
+    this.router.navigateByUrl("/stare-tehnica", {skipLocationChange: true});
+    this.location.replaceState('/stare-tehnica');
+  }
+
+  redirectToDocumente() {
+    this.router.navigateByUrl("/documente", {skipLocationChange: true});
+    this.location.replaceState('/documente');
   }
 
 }

@@ -91,7 +91,7 @@ export class PlatformaComponent implements OnInit {
         console.log(data);
       })
     })
-    this.stareTehnica();
+    // this.stareTehnica();
   }
 
   // getStari(){
@@ -107,8 +107,11 @@ export class PlatformaComponent implements OnInit {
     this.location.replaceState('/lista-masini');
   }
 
-  stareTehnica() {
+  redirectToStareTehnica() {
     this.router.navigateByUrl("/stare-tehnica", {skipLocationChange: true});
     this.location.replaceState('/stare-tehnica');
   }
+
+
+
 }

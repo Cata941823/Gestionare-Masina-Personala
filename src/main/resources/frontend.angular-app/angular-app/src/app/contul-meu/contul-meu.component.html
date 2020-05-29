@@ -3,10 +3,10 @@
 
   </div>
   <div class="submeniu">
-    <button mat-button>Garaj</button>
-    <button mat-button>Stare tehnica</button>
-    <button mat-button (click)="getDocumente();redirectToDocumente();">Documente</button>
-    <button mat-button>{{username}}</button>
+    <button mat-button (click)="redirectToGaraj();">Garaj</button>
+    <button mat-button (click)="redirectToStareTehnica();">Stare tehnica</button>
+    <button mat-button (click)="redirectToDocumente();">Documente</button>
+    <button mat-button (click)="redirectToAccount();">{{username}}</button>
 
   </div>
 </div>

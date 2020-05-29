@@ -108,4 +108,20 @@ export class ContulMeuComponent implements OnInit {
     })
   }
 
+  redirectToStareTehnica() {
+    this.router.navigateByUrl("/stare-tehnica", {skipLocationChange: true});
+    this.location.replaceState('/stare-tehnica');
+  }
+
+
+  redirectToGaraj() {
+    this.router.navigateByUrl("/lista-masini", {skipLocationChange: true});
+    this.location.replaceState('/lista-masini');
+  }
+
+  redirectToAccount(){
+    this.router.navigateByUrl("/myaccount", {skipLocationChange: true});
+    this.location.replaceState('/myaccount');
+  }
+
 }

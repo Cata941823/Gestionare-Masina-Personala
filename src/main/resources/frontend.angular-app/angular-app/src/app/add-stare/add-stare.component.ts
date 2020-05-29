@@ -129,8 +129,8 @@ export class AddStareComponent implements OnInit {
   }
 
   redirectToPlatforma() {
-    this.router.navigateByUrl("/myaccount", {skipLocationChange: true});
-    this.location.replaceState('/myaccount');
+    this.router.navigateByUrl("/platforma", {skipLocationChange: true});
+    this.location.replaceState('/platforma');
   }
 
 }

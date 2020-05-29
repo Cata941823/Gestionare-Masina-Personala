@@ -85,4 +85,14 @@ export class ListaMasiniComponent implements OnInit {
       }
     });
   }
+
+  redirectToStareTehnica() {
+    this.router.navigateByUrl("/stare-tehnica", {skipLocationChange: true});
+    this.location.replaceState('/stare-tehnica');
+  }
+
+  redirectToPlatform() {
+    this.router.navigateByUrl("/platforma", {skipLocationChange: true});
+    this.location.replaceState('/platforma');
+  }
 }

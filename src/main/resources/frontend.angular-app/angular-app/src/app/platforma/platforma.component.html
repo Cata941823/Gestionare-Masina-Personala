@@ -4,9 +4,9 @@
   </div>
   <div class="submeniu">
     <button mat-button (click)="redirectToGaraj();">Garaj</button>
-    <button mat-button (click)="getStariTehnice();">Stare tehnica</button>
-    <button mat-button (click)="getDocumente();redirectToDocumente();">Documente</button>
-    <button mat-button (click)="redirectToAccount();">{{Message}}</button>
+    <button mat-button (click)="getDocumente();getStariTehnice();redirectToStareTehnica();">Stare tehnica</button>
+    <button mat-button (click)="getDocumente();getStariTehnice();redirectToDocumente();">Documente</button>
+    <button mat-button (click)="getDocumente();getStariTehnice();redirectToAccount();">{{Message}}</button>
 
   </div>
 </div>
